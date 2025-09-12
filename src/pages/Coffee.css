@@ -5,7 +5,20 @@
 }
 
 /* Regras gerais de contraste */
-.coffee-page * {
+.coffee-page h1,
+.coffee-page h2,
+.coffee-page h3,
+.coffee-page h4,
+.coffee-page h5,
+.coffee-page h6,
+.coffee-page p,
+.coffee-page span,
+.coffee-page a,
+.coffee-page ul,
+.coffee-page ol,
+.coffee-page li,
+.coffee-page blockquote,
+.coffee-page label {
   color: inherit;
 }
 
