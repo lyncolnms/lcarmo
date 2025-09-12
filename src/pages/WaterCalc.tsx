@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './WaterCalc.css';
 
 interface BrewMethod {
   name: string;
@@ -13,6 +14,13 @@ const WaterCalc: React.FC = () => {
   const [coffeePowder, setCoffeePowder] = useState<string>('');
   const [ratio, setRatio] = useState<string>('');
   const [water, setWater] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [temperature, setTemperature] = useState<string>('');
+  const [time, setTime] = useState<string>('');
+  const [bloomWater, setBloomWater] = useState<string>('');
+  const [infusionWater, setInfusionWater] = useState<string>('');
+  const [stirWater, setStirWater] = useState<string>('');
+  const [totalWater, setTotalWater] = useState<string>('');
 
   const brewMethods: BrewMethod[] = [
     {
@@ -106,36 +114,26 @@ const WaterCalc: React.FC = () => {
     setCoffeePowder('');
     setRatio(selectedMethodData ? selectedMethodData.ratio.toString() : '');
     setWater('');
+    setError('');
+    setTemperature('');
+    setTime('');
+    setBloomWater('');
+    setInfusionWater('');
+    setStirWater('');
+    setTotalWater('');
   };
 
   return (
     <>
-      <style>
-        {`
-          .water-calc-input::placeholder {
-            color: #6c757d !important;
-            opacity: 0.7 !important;
-          }
-          .water-calc-select::placeholder {
-            color: #6c757d !important;
-            opacity: 0.7 !important;
-          }
-        `}
-      </style>
-      <main className="coffee-theme" style={{ 
-        backgroundColor: '#f8f9fa', 
-        color: '#2c3e50',
-        padding: '20px',
-        borderRadius: '8px'
-      }}>
-        <h2>
+      <main className="coffee-theme water-calc-container">
+        <h2 className="water-calc-title">
           <i className="fa fa-tint"></i> Cálculo Avançado de Água para Café
         </h2>
         
-        <div className="calc-form">
+        <div className="calc-form water-calc-form">
           {/* Seleção de Método */}
           <div className="field">
-            <label className="label">
+            <label className="label water-calc-label">
               <i className="fa fa-coffee"></i> Método de Preparo:
             </label>
             <div className="control">
@@ -188,11 +186,6 @@ const WaterCalc: React.FC = () => {
                     placeholder="Ex: 240"
                     value={finalCoffee} 
                     onChange={(e) => setFinalCoffee(e.target.value)}
-                    style={{ 
-                      borderColor: '#8B4513',
-                      backgroundColor: 'white',
-                      color: '#2c3e50'
-                    }}
                   />
                 </div>
                 <p className="help">Quantidade total de café pronto</p>
@@ -205,17 +198,12 @@ const WaterCalc: React.FC = () => {
                   <i className="fa fa-balance-scale"></i> Pó de Café (g):
                 </label>
                 <div className="control">
-                  <input 
-                    className="input water-calc-input" 
-                    type="number" 
-                    placeholder="Ex: 15"
-                    value={coffeePowder} 
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite a quantidade de café (g)"
+                    value={coffeePowder}
                     onChange={(e) => setCoffeePowder(e.target.value)}
-                    style={{ 
-                      borderColor: '#8B4513',
-                      backgroundColor: 'white',
-                      color: '#2c3e50'
-                    }}
                   />
                 </div>
                 <p className="help">Quantidade de café moído</p>
@@ -228,20 +216,123 @@ const WaterCalc: React.FC = () => {
                   <i className="fa fa-percentage"></i> Proporção (1:X):
                 </label>
                 <div className="control">
-                  <input 
-                    className="input water-calc-input" 
-                    type="number" 
-                    placeholder="Ex: 16"
-                    value={ratio} 
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite a razão (ex: 1:16)"
+                    value={ratio}
                     onChange={(e) => setRatio(e.target.value)}
-                    style={{ 
-                      borderColor: '#8B4513',
-                      backgroundColor: 'white',
-                      color: '#2c3e50'
-                    }}
                   />
                 </div>
                 <p className="help">Relação água/café</p>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="field">
+                <label className="label">
+                  <i className="fa fa-thermometer-half"></i> Temperatura (°C):
+                </label>
+                <div className="control">
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite a temperatura (°C)"
+                    value={temperature}
+                    onChange={(e) => setTemperature(e.target.value)}
+                  />
+                </div>
+                <p className="help">Temperatura da água</p>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="field">
+                <label className="label">
+                  <i className="fa fa-clock"></i> Tempo (segundos):
+                </label>
+                <div className="control">
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite o tempo (segundos)"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                  />
+                </div>
+                <p className="help">Tempo de extração</p>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="field">
+                <label className="label">
+                  <i className="fa fa-tint"></i> Água para Bloom (ml):
+                </label>
+                <div className="control">
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite a quantidade de água para bloom (ml)"
+                    value={bloomWater}
+                    onChange={(e) => setBloomWater(e.target.value)}
+                  />
+                </div>
+                <p className="help">Quantidade de água para a fase de bloom</p>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="field">
+                <label className="label">
+                  <i className="fa fa-tint"></i> Água para Infusão (ml):
+                </label>
+                <div className="control">
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite a quantidade de água para infusão (ml)"
+                    value={infusionWater}
+                    onChange={(e) => setInfusionWater(e.target.value)}
+                  />
+                </div>
+                <p className="help">Quantidade de água para a fase de infusão</p>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="field">
+                <label className="label">
+                  <i className="fa fa-tint"></i> Água para Stir (ml):
+                </label>
+                <div className="control">
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite a quantidade de água para stir (ml)"
+                    value={stirWater}
+                    onChange={(e) => setStirWater(e.target.value)}
+                  />
+                </div>
+                <p className="help">Quantidade de água para a fase de stir</p>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="field">
+                <label className="label">
+                  <i className="fa fa-tint"></i> Água Total (ml):
+                </label>
+                <div className="control">
+                  <input
+                    className="input water-calc-input"
+                    type="number"
+                    placeholder="Digite a quantidade de água para total (ml)"
+                    value={totalWater}
+                    onChange={(e) => setTotalWater(e.target.value)}
+                  />
+                </div>
+                <p className="help">Quantidade total de água</p>
               </div>
             </div>
           </div>
@@ -249,20 +340,19 @@ const WaterCalc: React.FC = () => {
           {/* Botões */}
           <div className="field is-grouped">
             <div className="control">
-              <button 
-                className="button is-primary" 
+              <button
+                className="button water-calc-button"
                 onClick={calculateFromSingleInput}
-                disabled={!selectedMethod}
               >
                 <i className="fa fa-calculator"></i> Calcular
               </button>
             </div>
             <div className="control">
-              <button 
-                className="button is-light" 
+              <button
+                className="button water-calc-button"
                 onClick={clearAll}
               >
-                <i className="fa fa-eraser"></i> Limpar
+                <i className="fa fa-trash"></i> Limpar Tudo
               </button>
             </div>
           </div>
@@ -289,6 +379,14 @@ const WaterCalc: React.FC = () => {
                   <strong>Água necessária:</strong> {water} ml
                 </p>
               </div>
+            </div>
+          )}
+
+          {/* Erro */}
+          {error && (
+            <div className="notification is-danger water-calc-notification">
+              <button className="delete" onClick={() => setError('')}></button>
+              {error}
             </div>
           )}
 
