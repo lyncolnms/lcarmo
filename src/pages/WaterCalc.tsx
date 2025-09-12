@@ -93,11 +93,6 @@ const WaterCalc: React.FC = () => {
       setWater(finalCoffeeNum.toFixed(1));
     }
     // Calcular café final baseado em água e proporção
-    else if (!isNaN(finalCoffeeNum) && !isNaN(ratioNum) && coffeePowder === '') {
-      const calculatedPowder = finalCoffeeNum / ratioNum;
-      setCoffeePowder(calculatedPowder.toFixed(1));
-      setWater(finalCoffeeNum.toFixed(1));
-    }
   };
 
   // Função para limpar todos os campos
