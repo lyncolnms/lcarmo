@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './WaterCalc.css';
 
 interface BrewMethod {
   name: string;
@@ -78,7 +79,7 @@ const WaterCalc: React.FC = () => {
     if (!isNaN(coffeePowderNum) && !isNaN(ratioNum) && finalCoffee === '') {
       const calculatedWater = coffeePowderNum * ratioNum;
       setWater(calculatedWater.toFixed(1));
-      setFinalCoffee(calculatedWater.toFixed(1));
+      setFinalCoffee((calculatedWater / ratioNum).toFixed(1));
     }
     // Calcular água baseada em café final e proporção
     else if (!isNaN(finalCoffeeNum) && !isNaN(ratioNum) && coffeePowder === '') {
@@ -93,6 +94,11 @@ const WaterCalc: React.FC = () => {
       setWater(finalCoffeeNum.toFixed(1));
     }
     // Calcular café final baseado em água e proporção
+    else if (!isNaN(finalCoffeeNum) && !isNaN(ratioNum) && coffeePowder === '') {
+      const calculatedPowder = finalCoffeeNum / ratioNum;
+      setCoffeePowder(calculatedPowder.toFixed(1));
+      setWater(finalCoffeeNum.toFixed(1));
+    }
   };
 
   // Função para limpar todos os campos
@@ -105,32 +111,15 @@ const WaterCalc: React.FC = () => {
 
   return (
     <>
-      <style>
-        {`
-          .water-calc-input::placeholder {
-            color: #6c757d !important;
-            opacity: 0.7 !important;
-          }
-          .water-calc-select::placeholder {
-            color: #6c757d !important;
-            opacity: 0.7 !important;
-          }
-        `}
-      </style>
-      <main className="coffee-theme" style={{ 
-        backgroundColor: '#f8f9fa', 
-        color: '#2c3e50',
-        padding: '20px',
-        borderRadius: '8px'
-      }}>
-        <h2>
+      <main className="coffee-theme water-calc-container">
+        <h2 className="water-calc-title">
           <i className="fa fa-tint"></i> Cálculo Avançado de Água para Café
         </h2>
         
-        <div className="calc-form">
+        <div className="calc-form water-calc-form">
           {/* Seleção de Método */}
           <div className="field">
-            <label className="label">
+            <label className="label water-calc-label">
               <i className="fa fa-coffee"></i> Método de Preparo:
             </label>
             <div className="control">
@@ -139,11 +128,6 @@ const WaterCalc: React.FC = () => {
                   value={selectedMethod} 
                   onChange={(e) => setSelectedMethod(e.target.value)}
                   className="water-calc-select"
-                  style={{ 
-                    borderColor: '#8B4513',
-                    backgroundColor: 'white',
-                    color: '#2c3e50'
-                  }}
                 >
                   <option value="">Selecione um método...</option>
                   {brewMethods.map(method => (
@@ -173,7 +157,7 @@ const WaterCalc: React.FC = () => {
           <div className="columns">
             <div className="column">
               <div className="field">
-                <label className="label">
+                <label className="label water-calc-label">
                   <i className="fa fa-flask"></i> Café Final (ml):
                 </label>
                 <div className="control">
@@ -183,11 +167,6 @@ const WaterCalc: React.FC = () => {
                     placeholder="Ex: 240"
                     value={finalCoffee} 
                     onChange={(e) => setFinalCoffee(e.target.value)}
-                    style={{ 
-                      borderColor: '#8B4513',
-                      backgroundColor: 'white',
-                      color: '#2c3e50'
-                    }}
                   />
                 </div>
                 <p className="help">Quantidade total de café pronto</p>
@@ -196,7 +175,7 @@ const WaterCalc: React.FC = () => {
 
             <div className="column">
               <div className="field">
-                <label className="label">
+                <label className="label water-calc-label">
                   <i className="fa fa-balance-scale"></i> Pó de Café (g):
                 </label>
                 <div className="control">
@@ -206,11 +185,6 @@ const WaterCalc: React.FC = () => {
                     placeholder="Ex: 15"
                     value={coffeePowder} 
                     onChange={(e) => setCoffeePowder(e.target.value)}
-                    style={{ 
-                      borderColor: '#8B4513',
-                      backgroundColor: 'white',
-                      color: '#2c3e50'
-                    }}
                   />
                 </div>
                 <p className="help">Quantidade de café moído</p>
@@ -219,7 +193,7 @@ const WaterCalc: React.FC = () => {
 
             <div className="column">
               <div className="field">
-                <label className="label">
+                <label className="label water-calc-label">
                   <i className="fa fa-percentage"></i> Proporção (1:X):
                 </label>
                 <div className="control">
@@ -229,11 +203,6 @@ const WaterCalc: React.FC = () => {
                     placeholder="Ex: 16"
                     value={ratio} 
                     onChange={(e) => setRatio(e.target.value)}
-                    style={{ 
-                      borderColor: '#8B4513',
-                      backgroundColor: 'white',
-                      color: '#2c3e50'
-                    }}
                   />
                 </div>
                 <p className="help">Relação água/café</p>
@@ -245,7 +214,7 @@ const WaterCalc: React.FC = () => {
           <div className="field is-grouped">
             <div className="control">
               <button 
-                className="button is-primary" 
+                className="button is-primary water-calc-button" 
                 onClick={calculateFromSingleInput}
                 disabled={!selectedMethod}
               >
@@ -254,7 +223,7 @@ const WaterCalc: React.FC = () => {
             </div>
             <div className="control">
               <button 
-                className="button is-light" 
+                className="button is-light water-calc-button" 
                 onClick={clearAll}
               >
                 <i className="fa fa-eraser"></i> Limpar
@@ -280,7 +249,7 @@ const WaterCalc: React.FC = () => {
                     <strong>Proporção:</strong> 1:{ratio}
                   </div>
                 </div>
-                <p style={{ fontSize: '18px', fontWeight: 'bold', marginTop: '10px' }}>
+                <p className="water-calc-result-highlight">
                   <strong>Água necessária:</strong> {water} ml
                 </p>
               </div>
@@ -288,16 +257,18 @@ const WaterCalc: React.FC = () => {
           )}
 
           {/* Instruções */}
-          <div className="content">
-            <h4 style={{ color: '#8B4513', marginBottom: '15px' }}>
-              <i className="fa fa-info-circle"></i> Como usar:
+          <div className="box has-background-light">
+            <h4 className="title is-5 has-text-grey-dark">
+              <i className="fa fa-info-circle has-text-info"></i> Como usar:
             </h4>
-            <ol style={{ color: '#2c3e50' }}>
-              <li>Selecione o método de preparo desejado</li>
-              <li>Preencha pelo menos um dos campos (café final, pó de café ou proporção)</li>
-              <li>Clique em "Calcular" para obter os valores restantes</li>
-              <li>Use as sugestões de moagem e proporção para melhores resultados</li>
-            </ol>
+            <div className="content has-text-grey-dark">
+              <ol>
+                <li>Selecione o método de preparo desejado</li>
+                <li>Preencha pelo menos um dos campos (café final, pó de café ou proporção)</li>
+                <li>Clique em "Calcular" para obter os valores restantes</li>
+                <li>Use as sugestões de moagem e proporção para melhores resultados</li>
+              </ol>
+            </div>
           </div>
         </div>
       </main>
