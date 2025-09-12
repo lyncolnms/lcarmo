@@ -654,17 +654,6 @@ const GrindCalc: React.FC = () => {
 
   const selectedSettings = brand && model && grinders[brand] && grinders[brand][model] ? grinders[brand][model] : null;
 
-  const chartData = selectedSettings ? {
-    labels: methods,
-    datasets: [{
-      label: 'Grind Setting',
-      data: methods.map(method => parseSetting(selectedSettings[method] || '0')),
-      backgroundColor: '#8B4513',
-      borderColor: '#654321',
-      borderWidth: 1,
-    }]
-  } : null;
-
   return (
     <main className="coffee-theme">
       <h2><i className="fa fa-cogs"></i> Coffee Grind Size Tool</h2>

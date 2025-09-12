@@ -20,7 +20,10 @@
     "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.1",
     "react-spring": "^9.7.3",
-    "typescript": "^5.9.2"
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "scripts": {
     "start": "react-scripts start",
