@@ -7,7 +7,7 @@ import Coffee from './pages/Coffee';
 import WaterCalc from './pages/WaterCalc';
 import GrindCalc from './pages/GrindCalc';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <Header />
@@ -20,6 +20,6 @@ function App() {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
