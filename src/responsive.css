@@ -1,0 +1,345 @@
+/* ===========================================
+   RESPONSIVE DESIGN SYSTEM - Global Styles
+   =========================================== */
+
+/* Breakpoints padronizados */
+:root {
+  /* Mobile First Breakpoints */
+  --mobile-xs: 320px;
+  --mobile-sm: 375px;
+  --mobile-md: 425px;
+  --tablet-sm: 640px;
+  --tablet-md: 768px;
+  --tablet-lg: 1024px;
+  --desktop-sm: 1200px;
+  --desktop-md: 1440px;
+  --desktop-lg: 1920px;
+
+  /* Container max-widths */
+  --container-xs: 100%;
+  --container-sm: 540px;
+  --container-md: 720px;
+  --container-lg: 960px;
+  --container-xl: 1140px;
+  --container-xxl: 1320px;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  --space-xxxl: 4rem;
+}
+
+/* ===========================================
+   GLOBAL RESPONSIVE UTILITIES
+   =========================================== */
+
+/* Container system */
+.container-responsive {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+@media (max-width: 640px) {
+  .container-responsive {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* Grid system */
+.grid-responsive {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid-responsive-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid-responsive-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-responsive-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-responsive-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .grid-responsive-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-responsive-2,
+  .grid-responsive-3,
+  .grid-responsive-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Flex utilities */
+.flex-responsive {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.flex-responsive-column {
+  flex-direction: column;
+}
+
+.flex-responsive-wrap {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .flex-responsive {
+    flex-direction: column;
+  }
+}
+
+/* Hide/Show utilities */
+.hide-mobile {
+  display: block !important;
+}
+
+.hide-tablet {
+  display: block !important;
+}
+
+.hide-desktop {
+  display: block !important;
+}
+
+.show-mobile {
+  display: none !important;
+}
+
+.show-tablet {
+  display: none !important;
+}
+
+.show-desktop {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+  .show-tablet {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+  .show-desktop {
+    display: block !important;
+  }
+}
+
+/* ===========================================
+   TYPOGRAPHY RESPONSIVE SCALES
+   =========================================== */
+
+.text-responsive-xs { font-size: clamp(0.75rem, 2vw, 0.875rem); }
+.text-responsive-sm { font-size: clamp(0.875rem, 2.5vw, 1rem); }
+.text-responsive-md { font-size: clamp(1rem, 3vw, 1.125rem); }
+.text-responsive-lg { font-size: clamp(1.125rem, 4vw, 1.25rem); }
+.text-responsive-xl { font-size: clamp(1.25rem, 5vw, 1.5rem); }
+.text-responsive-xxl { font-size: clamp(1.5rem, 6vw, 2rem); }
+
+/* ===========================================
+   SPACING RESPONSIVE UTILITIES
+   =========================================== */
+
+.margin-responsive {
+  margin: var(--space-lg);
+}
+
+.margin-responsive-top {
+  margin-top: var(--space-lg);
+}
+
+.margin-responsive-bottom {
+  margin-bottom: var(--space-lg);
+}
+
+.margin-responsive-left {
+  margin-left: var(--space-lg);
+}
+
+.margin-responsive-right {
+  margin-right: var(--space-lg);
+}
+
+.padding-responsive {
+  padding: var(--space-lg);
+}
+
+.padding-responsive-top {
+  padding-top: var(--space-lg);
+}
+
+.padding-responsive-bottom {
+  padding-bottom: var(--space-lg);
+}
+
+.padding-responsive-left {
+  padding-left: var(--space-lg);
+}
+
+.padding-responsive-right {
+  padding-right: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .margin-responsive,
+  .margin-responsive-top,
+  .margin-responsive-bottom,
+  .margin-responsive-left,
+  .margin-responsive-right {
+    margin: var(--space-sm);
+  }
+
+  .padding-responsive,
+  .padding-responsive-top,
+  .padding-responsive-bottom,
+  .padding-responsive-left,
+  .padding-responsive-right {
+    padding: var(--space-sm);
+  }
+}
+
+/* ===========================================
+   COMPONENT SPECIFIC RESPONSIVE FIXES
+   =========================================== */
+
+/* Header responsive improvements */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem !important;
+  }
+
+  header > div {
+    flex-direction: row !important;
+    gap: 1rem !important;
+    align-items: center !important;
+    position: relative;
+  }
+
+  header h1 {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Main content responsive */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem !important;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Cards responsive */
+@media (max-width: 768px) {
+  .project-card,
+  .news-card,
+  .tool-card {
+    margin: 0.5rem 0 !important;
+  }
+}
+
+/* Forms responsive */
+@media (max-width: 768px) {
+  form {
+    padding: 1rem !important;
+  }
+
+  .form-group {
+    margin-bottom: 1rem !important;
+  }
+
+  .button-group {
+    flex-direction: column !important;
+  }
+
+  .button-group button {
+    width: 100% !important;
+    margin: 0.25rem 0 !important;
+  }
+}
+
+/* Tables responsive */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.875rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Images responsive */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY RESPONSIVE IMPROVEMENTS
+   =========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .text-responsive-md {
+    font-weight: 600;
+  }
+}
+
+/* Focus improvements for mobile */
+@media (max-width: 768px) {
+  button:focus,
+  a:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 3px solid #007bff !important;
+    outline-offset: 2px !important;
+  }
+}

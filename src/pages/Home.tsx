@@ -34,9 +34,9 @@ const Home: React.FC = () => {
       </section>
       <section className="section">
         <h2 className="title is-2"><i className="fa fa-folder-open"></i> Meus Projetos</h2>
-        <div className="columns is-multiline">
+        <div className="grid-responsive grid-responsive-3">
           {projects.map((project, index) => (
-            <div key={index} className="column is-one-third">
+            <div key={index} className="project-item">
               <ProjectCard {...project} />
             </div>
           ))}
