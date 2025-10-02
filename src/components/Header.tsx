@@ -6,7 +6,6 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    console.log('Menu toggled:', !isMenuOpen);
     setIsMenuOpen(!isMenuOpen);
   };
 

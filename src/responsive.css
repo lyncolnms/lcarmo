@@ -2,7 +2,7 @@
    RESPONSIVE DESIGN SYSTEM - Global Styles
    =========================================== */
 
-/* Breakpoints padronizados */
+/* Standardized Breakpoints */
 :root {
   /* Mobile First Breakpoints */
   --mobile-xs: 320px;
@@ -45,7 +45,7 @@
   padding: 0 var(--space-md);
 }
 
-@media (max-width: 640px) {
+@media (max-width: var(--tablet-sm)) {
   .container-responsive {
     padding: 0 var(--space-sm);
   }
@@ -73,13 +73,13 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: var(--tablet-lg)) {
   .grid-responsive-4 {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   .grid-responsive-2,
   .grid-responsive-3,
   .grid-responsive-4 {
@@ -101,7 +101,7 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   .flex-responsive {
     flex-direction: column;
   }
@@ -214,7 +214,7 @@
   padding-right: var(--space-lg);
 }
 
-@media (max-width: 640px) {
+@media (max-width: var(--tablet-sm)) {
   .margin-responsive {
     margin: var(--space-sm);
   }
@@ -231,25 +231,6 @@
     margin-right: var(--space-sm);
   }
 
-  .padding-responsive {
-    padding: var(--space-sm);
-  }
-
-  .padding-responsive-top {
-    padding-top: var(--space-sm);
-  }
-
-  .padding-responsive-bottom {
-    padding-bottom: var(--space-sm);
-  }
-
-  .padding-responsive-left {
-    padding-left: var(--space-sm);
-  }
-
-  .padding-responsive-right {
-    padding-right: var(--space-sm);
-  }
 }
 
 /* ===========================================
@@ -257,7 +238,7 @@
    =========================================== */
 
 /* Header responsive improvements */
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   header {
     padding: 1rem !important;
   }
@@ -275,7 +256,7 @@
 }
 
 /* Main content responsive */
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   main {
     padding: 1rem !important;
   }
@@ -286,7 +267,7 @@
 }
 
 /* Cards responsive */
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   .project-card,
   .news-card,
   .tool-card {
@@ -295,7 +276,7 @@
 }
 
 /* Forms responsive */
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   form {
     padding: 1rem !important;
   }
@@ -315,7 +296,7 @@
 }
 
 /* Tables responsive */
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   table {
     font-size: 0.875rem;
   }
@@ -327,7 +308,7 @@
 }
 
 /* Images responsive */
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   img {
     max-width: 100%;
     height: auto;
@@ -353,7 +334,7 @@
 }
 
 /* Focus improvements for mobile */
-@media (max-width: 768px) {
+@media (max-width: var(--tablet-md)) {
   button:focus,
   a:focus,
   input:focus,

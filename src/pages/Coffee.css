@@ -88,24 +88,15 @@
   overflow: hidden;
 }
 
+/* Removed gradient overlay animation for performance */
 .coffee-nav-toggle-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.coffee-nav-toggle-btn:hover::before {
-  left: 100%;
+  display: none;
 }
 
 .coffee-nav-toggle-btn:hover {
+  /* Keep transform-based animation for hover */
   background: #a0522d;
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.03);
   box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
 }
 
