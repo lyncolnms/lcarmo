@@ -231,12 +231,24 @@
     margin-right: var(--space-sm);
   }
 
-  .padding-responsive,
-  .padding-responsive-top,
-  .padding-responsive-bottom,
-  .padding-responsive-left,
-  .padding-responsive-right {
+  .padding-responsive {
     padding: var(--space-sm);
+  }
+
+  .padding-responsive-top {
+    padding-top: var(--space-sm);
+  }
+
+  .padding-responsive-bottom {
+    padding-bottom: var(--space-sm);
+  }
+
+  .padding-responsive-left {
+    padding-left: var(--space-sm);
+  }
+
+  .padding-responsive-right {
+    padding-right: var(--space-sm);
   }
 }
 
