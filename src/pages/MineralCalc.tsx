@@ -49,9 +49,9 @@ interface WaterSource {
   calcium: number; // mg/L
   magnesium: number; // mg/L
   alkalinity: number; // calculated automatically
-  totalHardness: number; // calculado automaticamente
-  calciumHardness: number; // dureza de cálcio
-  magnesiumHardness: number; // dureza de magnésio
+  totalHardness: number; // calculated automatically
+  calciumHardness: number; // calcium hardness
+  magnesiumHardness: number; // magnesium hardness
 }
 
 interface BlendResult {
