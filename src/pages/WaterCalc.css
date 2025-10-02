@@ -77,4 +77,54 @@
   .water-calc-title {
     font-size: 1.5rem;
   }
+
+  .water-calc-form {
+    padding: 1rem;
+  }
+
+  .water-calc-input,
+  .water-calc-select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+
+  .water-calc-button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+
+  .water-calc-results {
+    padding: 1rem;
+  }
+
+  .water-calc-result-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .water-calc-suggestions {
+    padding: 1rem;
+  }
+
+  .water-calc-suggestion-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .water-calc-container {
+    padding: 10px;
+  }
+
+  .water-calc-title {
+    font-size: 1.25rem;
+  }
+
+  .water-calc-form,
+  .water-calc-results,
+  .water-calc-suggestions {
+    padding: 0.75rem;
+  }
 }

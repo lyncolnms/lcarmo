@@ -14,6 +14,7 @@ interface NewsItem {
 const Coffee: React.FC = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [activeSection, setActiveSection] = useState<'overview' | 'tools' | 'news'>('overview');
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   useEffect(() => {
     // Simulando API de notícias sobre café com dados mais ricos
@@ -70,6 +71,14 @@ const Coffee: React.FC = () => {
       icon: 'fa-cogs',
       color: 'is-success',
       path: '/coffee/grind-calc'
+    },
+    {
+      id: 'mineral-calc',
+      title: 'Calculadora de Sais Minerais',
+      description: 'Calcule blends perfeitos de água para sua extração baseada em alcalinidade e dureza',
+      icon: 'fa-flask',
+      color: 'is-warning',
+      path: '/coffee/mineral-calc'
     }
   ];
 
@@ -108,7 +117,23 @@ const Coffee: React.FC = () => {
       {/* Navigation Sidebar */}
       <div className="coffee-layout">
         <aside className="coffee-sidebar">
-          <nav className="coffee-nav">
+          {/* Mobile Navigation Toggle */}
+          <div className="coffee-mobile-nav-toggle">
+            <button
+              className="coffee-nav-toggle-btn"
+              onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+              aria-label="Toggle navigation"
+            >
+              <i className={`fa ${isMobileNavOpen ? 'fa-times' : 'fa-bars'}`}></i>
+              <span className="ml-2">
+                Navegação {activeSection === 'overview' && '- Visão Geral'}
+                {activeSection === 'tools' && '- Ferramentas'}
+                {activeSection === 'news' && '- Notícias'}
+              </span>
+            </button>
+          </div>
+
+          <nav className={`coffee-nav ${isMobileNavOpen ? 'is-open' : ''}`}>
             <div className="coffee-nav-header">
               <h3 className="title is-4">
                 <i className="fa fa-compass"></i> Navegação
@@ -117,21 +142,30 @@ const Coffee: React.FC = () => {
             <div className="coffee-nav-menu">
               <button
                 className={`coffee-nav-item ${activeSection === 'overview' ? 'is-active' : ''}`}
-                onClick={() => setActiveSection('overview')}
+                onClick={() => {
+                  setActiveSection('overview');
+                  setIsMobileNavOpen(false);
+                }}
               >
                 <i className="fa fa-home"></i>
                 <span>Visão Geral</span>
               </button>
               <button
                 className={`coffee-nav-item ${activeSection === 'tools' ? 'is-active' : ''}`}
-                onClick={() => setActiveSection('tools')}
+                onClick={() => {
+                  setActiveSection('tools');
+                  setIsMobileNavOpen(false);
+                }}
               >
                 <i className="fa fa-wrench"></i>
                 <span>Ferramentas</span>
               </button>
               <button
                 className={`coffee-nav-item ${activeSection === 'news' ? 'is-active' : ''}`}
-                onClick={() => setActiveSection('news')}
+                onClick={() => {
+                  setActiveSection('news');
+                  setIsMobileNavOpen(false);
+                }}
               >
                 <i className="fa fa-newspaper"></i>
                 <span>Notícias</span>
@@ -198,9 +232,9 @@ const Coffee: React.FC = () => {
                   <i className="fa fa-wrench"></i> Ferramentas Profissionais
                 </h2>
 
-                <div className="columns is-multiline">
+                <div className="grid-responsive grid-responsive-2">
                   {tools.map((tool) => (
-                    <div key={tool.id} className="column is-6">
+                    <div key={tool.id} className="tool-item">
                       <Link to={tool.path} className="coffee-tool-card">
                         <div className={`card ${tool.color} is-hoverable`}>
                           <div className="card-content">

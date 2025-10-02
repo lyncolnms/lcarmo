@@ -1,0 +1,471 @@
+/* MineralCalc.css - Styles for the mineral salt calculator */
+
+.mineral-calc-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem 0;
+}
+
+.mineral-calc-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.mineral-calc-header .title {
+  color: #212529 !important;
+  margin-bottom: 0.5rem;
+}
+
+.mineral-calc-header .subtitle {
+  color: #6c757d !important;
+}
+
+.mineral-calc-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Seções */
+.water-sources-section,
+.blend-config-section,
+.results-section,
+.sca-recommendations {
+  margin-bottom: 3rem;
+}
+
+.water-sources-section .title,
+.blend-config-section .title,
+.results-section .title {
+  color: #212529 !important;
+  border-bottom: 2px solid #8B4513;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Grid de Fontes de Água */
+.water-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.water-source-card {
+  height: fit-content;
+}
+
+.water-source-card .card {
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.water-source-card .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.water-source-card .card-header {
+  background: linear-gradient(135deg, #8B4513 0%, #a0522d 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.water-source-card .card-header-title {
+  color: white !important;
+}
+
+.water-source-card .card-header-title input {
+  color: white !important;
+}
+
+.water-source-card .card-content {
+  padding: 1.5rem;
+}
+
+.water-source-card .field {
+  margin-bottom: 1rem;
+}
+
+.water-source-card .label {
+  color: #495057;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.water-source-card .input {
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.water-source-card .input:focus {
+  border-color: #8B4513;
+  box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+}
+
+/* Valores Calculados */
+.calculated-values {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.value-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.value-item:last-child {
+  margin-bottom: 0;
+}
+
+.value-label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.value-result {
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 1.1rem;
+}
+
+/* Botão Adicionar Água */
+.add-water-button {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.add-water-button .button {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.add-water-button .button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* Configuração do Blend */
+.blend-config-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.blend-config-card .field {
+  margin-bottom: 1.5rem;
+}
+
+.blend-config-card .label {
+  color: #495057;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.sca-hint {
+  color: #17a2b8;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+
+.blend-config-card .input {
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  font-size: 1.1rem;
+  padding: 0.75rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blend-config-card .input:focus {
+  border-color: #8B4513;
+  box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+}
+
+.blend-config-card .help {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.blend-config-card .button {
+  background: linear-gradient(135deg, #8B4513 0%, #a0522d 100%);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.blend-config-card .button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+}
+
+/* Resultados */
+.results-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.results-header .title {
+  margin-bottom: 0 !important;
+}
+
+.results-header .button {
+  border-radius: 6px;
+}
+
+.results-card .subtitle {
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.blend-results {
+  margin-bottom: 1.5rem;
+}
+
+.blend-result-item {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid #8B4513;
+}
+
+.blend-source-info {
+  font-size: 1.1rem;
+  color: #495057;
+}
+
+.final-values {
+  background: linear-gradient(135deg, #8B4513 0%, #a0522d 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.final-values .value-item {
+  margin-bottom: 0.5rem;
+}
+
+.final-values .value-item:last-child {
+  margin-bottom: 0;
+}
+
+.final-values .value-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.final-values .value-result {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Recomendações SCA */
+.sca-recommendations .notification {
+  background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+  border: 1px solid #bee5eb;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.sca-recommendations .title {
+  color: #0c5460 !important;
+  margin-bottom: 1rem;
+}
+
+.sca-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sca-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #bee5eb;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.sca-item strong {
+  color: #0c5460;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mineral-calc-page {
+    padding: 1rem 0;
+  }
+
+  .mineral-calc-header {
+    margin-bottom: 2rem;
+  }
+
+  .mineral-calc-header .title {
+    font-size: 1.75rem;
+  }
+
+  .mineral-calc-header .subtitle {
+    font-size: 1rem;
+  }
+
+  .mineral-calc-content {
+    padding: 0 0.5rem;
+  }
+
+  .water-sources-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .water-source-card .card-content {
+    padding: 1rem;
+  }
+
+  .blend-config-card,
+  .results-card {
+    padding: 1.5rem;
+  }
+
+  .blend-config-card .input {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .blend-config-card .button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .sca-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sca-item {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mineral-calc-page {
+    padding: 0.5rem 0;
+  }
+
+  .mineral-calc-header .title {
+    font-size: 1.5rem;
+  }
+
+  .mineral-calc-content {
+    padding: 0 0.25rem;
+  }
+
+  .water-source-card .card-content {
+    padding: 0.8rem;
+  }
+
+  .blend-config-card,
+  .results-card {
+    padding: 1rem;
+  }
+
+  .blend-config-card .input {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+
+  .blend-config-card .button {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+
+  .blend-result-item {
+    padding: 0.8rem;
+  }
+
+  .blend-source-info {
+    font-size: 1rem;
+  }
+
+  .final-values {
+    padding: 1rem;
+  }
+
+  .final-values .value-result {
+    font-size: 1.1rem;
+  }
+
+  .calculated-values {
+    padding: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .value-result {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.water-source-card,
+.blend-config-card,
+.results-card,
+.sca-recommendations {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Utilitários */
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 1rem !important;
+}

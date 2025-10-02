@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    console.log('Menu toggled:', !isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMenu();
+  };
+
   return (
     <header style={{
       background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3a7bd5 100%)',
@@ -17,7 +31,8 @@ const Header: React.FC = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         maxWidth: '1200px',
-        margin: '0 auto'
+        margin: '0 auto',
+        position: 'relative'
       }}>
         <div>
           <Link to="/" style={{
@@ -33,7 +48,29 @@ const Header: React.FC = () => {
             Lyncoln Carmo
           </Link>
         </div>
-        <nav>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={handleButtonClick}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'white',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            padding: '0.5rem',
+            zIndex: 1001,
+            position: 'relative'
+          }}
+          className="mobile-menu-btn"
+          aria-label="Toggle menu"
+          type="button"
+        >
+          <i className={`fa ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+        </button>
+
+        {/* Desktop navigation */}
+        <nav className="desktop-nav">
           <ul style={{
             listStyle: 'none',
             display: 'flex',
@@ -85,6 +122,29 @@ const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
+
+        {/* Mobile navigation */}
+        {isMenuOpen && (
+          <nav className="mobile-nav">
+            <ul>
+              <li>
+                <Link to="/" onClick={() => setIsMenuOpen(false)}>
+                  <i className="fa fa-home"></i> Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/curriculum" onClick={() => setIsMenuOpen(false)}>
+                  <i className="fa fa-file-text"></i> Currículo
+                </Link>
+              </li>
+              <li>
+                <Link to="/coffee" onClick={() => setIsMenuOpen(false)}>
+                  <i className="fa fa-coffee"></i> Café
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        )}
       </div>
     </header>
   );

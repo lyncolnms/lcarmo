@@ -6,6 +6,7 @@ import Curriculum from './pages/Curriculum';
 import Coffee from './pages/Coffee';
 import WaterCalc from './pages/WaterCalc';
 import GrindCalc from './pages/GrindCalc';
+import MineralCalc from './pages/MineralCalc';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route exact path="/coffee" component={Coffee} />
         <Route path="/coffee/water-calc" component={WaterCalc} />
         <Route path="/coffee/grind-calc" component={GrindCalc} />
+        <Route path="/coffee/mineral-calc" component={MineralCalc} />
       </Switch>
     </Router>
   );

@@ -63,6 +63,61 @@
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Mobile Navigation Toggle */
+.coffee-mobile-nav-toggle {
+  display: none;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  background: #f8f9fa;
+}
+
+.coffee-nav-toggle-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.coffee-nav-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.coffee-nav-toggle-btn:hover::before {
+  left: 100%;
+}
+
+.coffee-nav-toggle-btn:hover {
+  background: #a0522d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+}
+
+.coffee-nav-toggle-btn i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.coffee-nav-toggle-btn:hover i {
+  transform: scale(1.1);
+}
+
 .coffee-nav-header {
   padding: 0 1.5rem 1.5rem;
   border-bottom: 1px solid #e9ecef;
@@ -322,18 +377,37 @@
     position: static;
     border-right: none;
     border-bottom: 1px solid #e9ecef;
-  }
-
-  .coffee-nav-menu {
-    display: flex;
-    overflow-x: auto;
     padding: 0;
   }
 
+  .coffee-mobile-nav-toggle {
+    display: block;
+  }
+
+  .coffee-nav {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .coffee-nav.is-open {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  .coffee-nav-header {
+    display: none;
+  }
+
+  .coffee-nav-menu {
+    display: block;
+    padding: 1rem;
+  }
+
   .coffee-nav-item {
-    flex-shrink: 0;
-    margin-right: 0.5rem;
-    white-space: nowrap;
+    margin-bottom: 0.5rem;
+    justify-content: flex-start;
   }
 }
 
@@ -358,6 +432,79 @@
 
   .columns.is-multiline .column {
     padding: 0.5rem;
+  }
+
+  .coffee-sidebar {
+    position: static;
+    width: 100%;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .coffee-mobile-nav-toggle {
+    display: block;
+    padding: 0.75rem 1rem;
+  }
+
+  .coffee-nav-toggle-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .coffee-layout {
+    flex-direction: column;
+  }
+
+  .coffee-main {
+    width: 100%;
+  }
+
+  .coffee-hero h1 {
+    font-size: 2rem;
+  }
+
+  .coffee-hero h2 {
+    font-size: 1.25rem;
+  }
+
+  .coffee-hero p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .coffee-hero {
+    padding: 2rem 1rem;
+  }
+
+  .coffee-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .coffee-hero h2 {
+    font-size: 1.125rem;
+  }
+
+  .coffee-content {
+    padding: 0.5rem;
+  }
+
+  .coffee-mobile-nav-toggle {
+    padding: 0.5rem;
+  }
+
+  .coffee-nav-toggle-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .coffee-nav-item {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .coffee-nav-item span {
+    font-size: 0.85rem;
   }
 }
 
