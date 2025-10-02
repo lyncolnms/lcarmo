@@ -1,19 +1,43 @@
 import React, { useState, useMemo } from 'react';
 import './MineralCalc.css';
 
-// Funções de cálculo (definidas fora do componente para evitar problemas de dependências)
+/**
+ * Calculates alkalinity in mg/L CaCO3 from bicarbonate (mg/L).
+ * Formula: alkalinity = bicarbonate * 0.8
+ * @param {number} bicarbonate - Bicarbonate concentration in mg/L
+ * @returns {number} Alkalinity in mg/L CaCO3
+ */
 const calculateAlkalinity = (bicarbonate: number): number => {
-  return bicarbonate * 0.8; // Conversão para mg/L CaCO3
+  return bicarbonate * 0.8; // Conversion to mg/L CaCO3
 };
 
+/**
+ * Calculates total hardness in mg/L CaCO3 from calcium and magnesium (mg/L).
+ * Formula: totalHardness = calciumHardness + magnesiumHardness
+ * @param {number} calcium - Calcium concentration in mg/L
+ * @param {number} magnesium - Magnesium concentration in mg/L
+ * @returns {number} Total hardness in mg/L CaCO3
+ */
 const calculateTotalHardness = (calcium: number, magnesium: number): number => {
   return calculateCalciumHardness(calcium) + calculateMagnesiumHardness(magnesium);
 };
 
+/**
+ * Calculates calcium hardness in mg/L CaCO3 from calcium (mg/L).
+ * Formula: calciumHardness = calcium * 2.5
+ * @param {number} calcium - Calcium concentration in mg/L
+ * @returns {number} Calcium hardness in mg/L CaCO3
+ */
 const calculateCalciumHardness = (calcium: number): number => {
   return calcium * 2.5; // 1 mg/L Ca = 2.5 mg/L CaCO3
 };
 
+/**
+ * Calculates magnesium hardness in mg/L CaCO3 from magnesium (mg/L).
+ * Formula: magnesiumHardness = magnesium * 4.1
+ * @param {number} magnesium - Magnesium concentration in mg/L
+ * @returns {number} Magnesium hardness in mg/L CaCO3
+ */
 const calculateMagnesiumHardness = (magnesium: number): number => {
   return magnesium * 4.1; // 1 mg/L Mg = 4.1 mg/L CaCO3
 };
@@ -24,7 +48,7 @@ interface WaterSource {
   bicarbonate: number; // mg/L
   calcium: number; // mg/L
   magnesium: number; // mg/L
-  alkalinity: number; // calculado automaticamente
+  alkalinity: number; // calculated automatically
   totalHardness: number; // calculado automaticamente
   calciumHardness: number; // dureza de cálcio
   magnesiumHardness: number; // dureza de magnésio
