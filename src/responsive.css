@@ -215,12 +215,20 @@
 }
 
 @media (max-width: 640px) {
-  .margin-responsive,
-  .margin-responsive-top,
-  .margin-responsive-bottom,
-  .margin-responsive-left,
-  .margin-responsive-right {
+  .margin-responsive {
     margin: var(--space-sm);
+  }
+  .margin-responsive-top {
+    margin-top: var(--space-sm);
+  }
+  .margin-responsive-bottom {
+    margin-bottom: var(--space-sm);
+  }
+  .margin-responsive-left {
+    margin-left: var(--space-sm);
+  }
+  .margin-responsive-right {
+    margin-right: var(--space-sm);
   }
 
   .padding-responsive,
