@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Coffee as CoffeeIcon, Compass, Home, Wrench, Newspaper, Star, Calculator, GraduationCap, Users, ArrowRight, Calendar, ExternalLink } from 'lucide-react';
 import './Coffee.css';
 
 interface NewsItem {
@@ -62,7 +62,7 @@ const Coffee: React.FC = () => {
       description: 'Calcule a quantidade perfeita de água e café para seu método de preparo',
       icon: 'fa-tint',
       color: 'is-info',
-      path: '/coffee/water-calc'
+      sectionId: '#water-calc-section'
     },
     {
       id: 'grind-calc',
@@ -70,7 +70,7 @@ const Coffee: React.FC = () => {
       description: 'Descubra a moagem ideal para cada método de extração',
       icon: 'fa-cogs',
       color: 'is-success',
-      path: '/coffee/grind-calc'
+      sectionId: '#grind-calc-section'
     },
     {
       id: 'mineral-calc',
@@ -78,7 +78,7 @@ const Coffee: React.FC = () => {
       description: 'Calcule blends perfeitos de água para sua extração baseada em alcalinidade e dureza',
       icon: 'fa-flask',
       color: 'is-warning',
-      path: '/coffee/mineral-calc'
+      sectionId: '#mineral-calc-section'
     }
   ];
 
@@ -91,7 +91,7 @@ const Coffee: React.FC = () => {
             <div className="columns is-vcentered">
               <div className="column is-6">
                 <h1 className="title is-1 has-text-white">
-                  <i className="fa fa-coffee"></i> Universo do Café
+                  <CoffeeIcon className="w-6 h-6" /> Universo do Café
                 </h1>
                 <h2 className="subtitle is-3 has-text-white">
                   Ferramentas profissionais para baristas e entusiastas
@@ -136,7 +136,7 @@ const Coffee: React.FC = () => {
           <nav className={`coffee-nav ${isMobileNavOpen ? 'is-open' : ''}`}>
             <div className="coffee-nav-header">
               <h3 className="title is-4">
-                <i className="fa fa-compass"></i> Navegação
+                <Compass className="w-5 h-5" /> Navegação
               </h3>
             </div>
             <div className="coffee-nav-menu">
@@ -147,7 +147,7 @@ const Coffee: React.FC = () => {
                   setIsMobileNavOpen(false);
                 }}
               >
-                <i className="fa fa-home"></i>
+                <Home className="w-4 h-4" />
                 <span>Visão Geral</span>
               </button>
               <button
@@ -235,7 +235,15 @@ const Coffee: React.FC = () => {
                 <div className="grid-responsive grid-responsive-2">
                   {tools.map((tool) => (
                     <div key={tool.id} className="tool-item">
-                      <Link to={tool.path} className="coffee-tool-card">
+                      <button
+                        onClick={() => {
+                          const element = document.querySelector(tool.sectionId);
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                        className="coffee-tool-card"
+                      >
                         <div className={`card ${tool.color} is-hoverable`}>
                           <div className="card-content">
                             <div className="media">
@@ -257,7 +265,7 @@ const Coffee: React.FC = () => {
                             </span>
                           </footer>
                         </div>
-                      </Link>
+                      </button>
                     </div>
                   ))}
                 </div>

@@ -1,152 +1,74 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Header.css';
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Menu, Coffee, User, Briefcase, FileText, Wrench } from "lucide-react";
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
   };
 
-  const handleButtonClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleMenu();
-  };
+  const menuItems = [
+    { id: "sobre", label: "Sobre", icon: User },
+    { id: "portfolio", label: "Portfolio", icon: Briefcase },
+    { id: "curriculo", label: "Currículo", icon: FileText },
+    { id: "cafe", label: "Café", icon: Coffee },
+    { id: "ferramentas", label: "Ferramentas", icon: Wrench },
+  ];
 
   return (
-    <header style={{
-      background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3a7bd5 100%)',
-      color: 'white',
-      padding: '1.5rem 2rem',
-      boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000
-    }}>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        position: 'relative'
-      }}>
-        <div>
-          <Link to="/" style={{
-            textDecoration: 'none',
-            color: 'white',
-            fontSize: '1.8rem',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}>
-            <i className="fa fa-user" style={{ fontSize: '1.5rem' }}></i>
-            Lyncoln Carmo
-          </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <Coffee className="h-6 w-6 text-primary" />
+          <span className="font-semibold">Meu Portfolio</span>
         </div>
 
-        {/* Mobile menu button */}
-        <button
-          onClick={handleButtonClick}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: 'white',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            padding: '0.5rem',
-            zIndex: 1001,
-            position: 'relative'
-          }}
-          className="mobile-menu-btn"
-          aria-label="Toggle menu"
-          type="button"
-        >
-          <i className={`fa ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-        </button>
-
-        {/* Desktop navigation */}
-        <nav className="desktop-nav">
-          <ul style={{
-            listStyle: 'none',
-            display: 'flex',
-            gap: '2rem',
-            margin: 0,
-            padding: 0
-          }}>
-            <li>
-              <Link to="/" style={{
-                textDecoration: 'none',
-                color: 'white',
-                fontWeight: '500',
-                fontSize: '1.1rem',
-                transition: 'color 0.3s ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.3rem'
-              }}>
-                <i className="fa fa-home"></i> Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/curriculum" style={{
-                textDecoration: 'none',
-                color: 'white',
-                fontWeight: '500',
-                fontSize: '1.1rem',
-                transition: 'color 0.3s ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.3rem'
-              }}>
-                <i className="fa fa-file-text"></i> Currículo
-              </Link>
-            </li>
-            <li>
-              <Link to="/coffee" style={{
-                textDecoration: 'none',
-                color: 'white',
-                fontWeight: '500',
-                fontSize: '1.1rem',
-                transition: 'color 0.3s ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.3rem'
-              }}>
-                <i className="fa fa-coffee"></i> Café
-              </Link>
-            </li>
-          </ul>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {menuItems.map((item) => (
+            <Button
+              key={item.id}
+              variant="ghost"
+              onClick={() => scrollToSection(item.id)}
+              className="flex items-center space-x-2"
+            >
+              <item.icon className="h-4 w-4" />
+              <span>{item.label}</span>
+            </Button>
+          ))}
         </nav>
 
-        {/* Mobile navigation */}
-        {isMenuOpen && (
-          <nav className="mobile-nav">
-            <ul>
-              <li>
-                <Link to="/" onClick={() => setIsMenuOpen(false)}>
-                  <i className="fa fa-home"></i> Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/curriculum" onClick={() => setIsMenuOpen(false)}>
-                  <i className="fa fa-file-text"></i> Currículo
-                </Link>
-              </li>
-              <li>
-                <Link to="/coffee" onClick={() => setIsMenuOpen(false)}>
-                  <i className="fa fa-coffee"></i> Café
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        )}
+        {/* Mobile Navigation */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-64">
+            <div className="flex flex-col space-y-4 mt-8">
+              {menuItems.map((item) => (
+                <Button
+                  key={item.id}
+                  variant="ghost"
+                  onClick={() => scrollToSection(item.id)}
+                  className="flex items-center space-x-2 justify-start"
+                >
+                  <item.icon className="h-4 w-4" />
+                  <span>{item.label}</span>
+                </Button>
+              ))}
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
