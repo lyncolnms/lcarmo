@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
+import { Info, FolderOpen } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -25,20 +26,26 @@ const Home: React.FC = () => {
   ];
 
   return (
-    <main className="container">
-      <section className="section">
-        <div className="content">
-          <h2 className="title is-2"><i className="fa fa-info-circle"></i> Sobre Mim</h2>
-          <p>Olá, sou Lyncoln Carmo, desenvolvedor apaixonado por tecnologia e café.</p>
+    <main className="container mx-auto px-4 py-8">
+      <section className="mb-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 flex items-center gap-2">
+            <Info className="w-8 h-8" />
+            Sobre Mim
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            Olá, sou Lyncoln Carmo, desenvolvedor apaixonado por tecnologia e café.
+          </p>
         </div>
       </section>
-      <section className="section">
-        <h2 className="title is-2"><i className="fa fa-folder-open"></i> Meus Projetos</h2>
-        <div className="grid-responsive grid-responsive-3">
+      <section>
+        <h2 className="text-3xl font-bold mb-8 flex items-center gap-2">
+          <FolderOpen className="w-8 h-8" />
+          Meus Projetos
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <div key={index} className="project-item">
-              <ProjectCard {...project} />
-            </div>
+            <ProjectCard key={index} {...project} />
           ))}
         </div>
       </section>
