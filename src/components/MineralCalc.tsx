@@ -81,7 +81,7 @@ export function MineralCalc() {
 
   // Função para adicionar nova água
   const addWaterSource = () => {
-    const newId = Date.now().toString();
+    const newId = crypto.randomUUID();
     const newWater: WaterSource = {
       id: newId,
       name: `Água ${waterSources.length + 1}`,
