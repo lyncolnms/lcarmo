@@ -207,7 +207,9 @@ export function MineralCalc() {
     let bestError = Infinity;
 
     // Gerar combinações possíveis usando programação dinâmica simplificada
-    const iterations = 2000; // Aumentar iterações para melhor precisão
+    // Make the number of iterations adaptive to the number of sources for better scalability.
+    // For 3 sources: 2000, for 4: 4000, for 5: 8000, etc.
+    const iterations = Math.max(2000, 2000 * Math.pow(2, sources.length - 3));
     
     for (let i = 0; i < iterations; i++) {
       const proportions: number[] = [];
