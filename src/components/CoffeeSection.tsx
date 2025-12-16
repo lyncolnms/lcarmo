@@ -56,6 +56,7 @@ export function CoffeeSection() {
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
             <Coffee className="h-8 w-8" />
             Universo do Café
+            <Badge variant="secondary" className="text-sm">Em Breve</Badge>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Explorando a arte e ciência por trás da bebida mais amada do mundo.
