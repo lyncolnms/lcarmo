@@ -11,7 +11,7 @@ export function ResumeSection() {
       title: "Desenvolvedor Full Stack Mobile",
       company: "Conexa - Hub de Inovação Aliare",
       period: "04/2024 - 07/2025",
-      location: "São Paulo, SP",
+      location: "Goiânia, GO",
       description: "Migração de Xamarin.Forms para .NET MAUI, manutenção e novas interfaces.",
       achievements: [
         "Aplicativo AgriQ: Migração e manutenção",
