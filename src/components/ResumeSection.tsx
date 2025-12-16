@@ -11,7 +11,7 @@ export function ResumeSection() {
       title: "Desenvolvedor Full Stack Mobile",
       company: "Conexa - Hub de Inovação Aliare",
       period: "04/2024 - 07/2025",
-      location: "São Paulo, SP",
+      location: "Londrina, PR",
       description: "Migração de Xamarin.Forms para .NET MAUI, manutenção e novas interfaces.",
       achievements: [
         "Aplicativo AgriQ: Migração e manutenção",
@@ -35,7 +35,7 @@ export function ResumeSection() {
       title: "Engenheiro de Software",
       company: "Londrisoft",
       period: "06/2017 - 07/2021",
-      location: "São Paulo, SP",
+      location: "Londrina, PR",
       description: "Desenvolvimento de aplicativos móveis para vendas.",
       achievements: [
         "Gestor MobVendas: Aplicativo para controle de vendas e estoque",
