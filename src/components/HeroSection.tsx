@@ -5,7 +5,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function HeroSection() {
   const skills = [
-    "C#", ".NET MAUI", "Xamarin", "React Native",
+    "C#", ".NET MAUI", "Xamarin",
     "Mobile Development", "Coffee Brewing", "API Development"
   ];
 
