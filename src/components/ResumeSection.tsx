@@ -159,7 +159,7 @@ export function ResumeSection() {
               <div>
                 <h3 className="text-xl font-semibold mb-4">Mobile Development</h3>
                 <div className="space-y-2">
-                  {[".NET MAUI", "Xamarin.Forms", "Xamarin.Android", "React Native", "TypeScript", "JavaScript"].map((skill) => (
+                  {[".NET MAUI", "Xamarin.Forms", "Xamarin.Android"].map((skill) => (
                     <div key={skill} className="flex items-center justify-between">
                       <span className="text-sm">{skill}</span>
                       <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
