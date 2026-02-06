@@ -54,6 +54,7 @@ function TabsList({
 } & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
+      role="tablist"
       data-slot="tabs-list"
       className={cn(
         "bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-xl p-[3px] flex",
@@ -81,6 +82,9 @@ function TabsTrigger({
 
   return (
     <button
+      role="tab"
+      aria-selected={isActive}
+      aria-controls={`panel-${value}`}
       data-slot="tabs-trigger"
       data-state={isActive ? "active" : "inactive"}
       className={cn(
@@ -113,6 +117,9 @@ function TabsContent({
 
   return (
     <div
+      role="tabpanel"
+      id={`panel-${value}`}
+      aria-labelledby={`tab-${value}`}
       data-slot="tabs-content"
       className={cn("flex-1 outline-none", className)}
       {...props}

@@ -34,7 +34,7 @@ const Home: React.FC = () => {
             Sobre Mim
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300">
-            Olá, sou Lyncoln Carmo, desenvolvedor apaixonado por tecnologia e café.
+            Olá, sou o Lyncoln, desenvolvedor apaixonado por tecnologia e café.
           </p>
         </div>
       </section>

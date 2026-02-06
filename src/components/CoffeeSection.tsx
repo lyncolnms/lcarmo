@@ -50,7 +50,32 @@ export function CoffeeSection() {
   ];
 
   return (
-    <section id="cafe" className="py-20 bg-secondary/20">
+    <section id="cafe" className="py-20 bg-secondary/20 relative min-h-screen">
+      {/* Overlay Em Breve */}
+      <div 
+        className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-50 flex items-center justify-center"
+        style={{
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)'
+        }}
+      >
+        <div className="text-center space-y-6 px-4 max-w-2xl">
+          <div className="bg-white rounded-3xl p-12 shadow-2xl border-2 border-gray-100">
+            <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 border-4 border-primary mb-8">
+              <Coffee className="h-12 w-12 text-primary" />
+            </div>
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border border-gray-200">
+              <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Em Breve</h3>
+              <p className="text-xl text-gray-800 leading-relaxed max-w-lg mx-auto font-medium">
+                Conteúdo sobre café em desenvolvimento.
+                <br />Aguarde novidades!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
@@ -69,6 +94,7 @@ export function CoffeeSection() {
                 <img
                   src={article.image}
                   alt={article.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

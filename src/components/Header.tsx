@@ -27,7 +27,7 @@ export function Header() {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Coffee className="h-6 w-6 text-primary" />
-          <span className="font-semibold">Meu Portfolio</span>
+          <span className="font-semibold">Lyncoln do Carmo</span>
         </div>
 
         {/* Desktop Navigation */}
@@ -48,11 +48,11 @@ export function Header() {
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label="Abrir menu">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-64">
+          <SheetContent side="right" className="w-64" aria-label="Menu de navegação">
             <div className="flex flex-col space-y-4 mt-8">
               {menuItems.map((item) => (
                 <Button

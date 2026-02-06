@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Info, Briefcase, GraduationCap, Award, Mail, Phone, Linkedin, Github } from 'lucide-react';
+import { User, Info, Briefcase, GraduationCap, Award, Mail, Linkedin, Github } from 'lucide-react';
 
 const Curriculum: React.FC = () => {
   return (
@@ -26,10 +26,6 @@ const Curriculum: React.FC = () => {
             <p className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
               lyncolnms@gmail.com
-            </p>
-            <p className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              (43) 99954 4482
             </p>
           </div>
           <div className="space-y-3">
