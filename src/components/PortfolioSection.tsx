@@ -39,6 +39,9 @@ export function PortfolioSection() {
       {/* Overlay Em Breve */}
       <div 
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-50 flex items-center justify-center"
+        role="status"
+        aria-live="polite"
+        aria-label="Seção de portfólio em breve"
         style={{
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           backdropFilter: 'blur(8px)',
@@ -48,7 +51,7 @@ export function PortfolioSection() {
         <div className="text-center space-y-6 px-4 max-w-2xl">
           <div className="bg-white rounded-3xl p-12 shadow-2xl border-2 border-gray-100">
             <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 border-4 border-primary mb-8">
-              <Briefcase className="h-12 w-12 text-primary" />
+              <Briefcase className="h-12 w-12 text-primary" aria-hidden="true" />
             </div>
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border border-gray-200">
               <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Em Breve</h3>
@@ -61,7 +64,7 @@ export function PortfolioSection() {
         </div>
       </div>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4" aria-hidden="true" {...({ inert: "" } as any)}>
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
             Meus Projetos
