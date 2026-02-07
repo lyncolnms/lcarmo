@@ -94,7 +94,7 @@ export function Footer() {
                 type="email"
                 placeholder="Seu email"
                 required
-                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                pattern="[^@\\s]+@[^@\\s]+\\.[^@\\s]+"
                 aria-label="Email para newsletter"
                 className="flex-1 px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               />
