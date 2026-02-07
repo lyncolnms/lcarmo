@@ -83,6 +83,7 @@ function TabsTrigger({
   return (
     <button
       role="tab"
+      id={`tab-${value}`}
       aria-selected={isActive}
       aria-controls={`panel-${value}`}
       data-slot="tabs-trigger"
