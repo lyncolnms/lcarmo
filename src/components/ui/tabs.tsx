@@ -119,7 +119,6 @@ function TabsContent({
       id={`panel-${value}`}
       aria-labelledby={`tab-${value}`}
       aria-hidden={!isActive}
-      tabIndex={isActive ? 0 : -1}
       data-slot="tabs-content"
       className={cn("flex-1 outline-none", !isActive && "hidden", className)}
       {...props}
