@@ -40,7 +40,6 @@ export function PortfolioSection() {
       <div 
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-50 flex items-center justify-center"
         role="status"
-        aria-live="polite"
         aria-label="Seção de portfólio em breve"
         style={{
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
