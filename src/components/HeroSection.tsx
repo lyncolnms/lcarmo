@@ -4,8 +4,8 @@ import { Github, Linkedin, Mail, Download } from "lucide-react";
 
 export function HeroSection() {
   const skills = [
-    "React", "TypeScript", "Node.js", "Python",
-    "Design Systems", "Coffee Brewing", "UX/UI"
+    "C#", ".NET MAUI", "Xamarin",
+    "Mobile Development", "Coffee Brewing", "API Development"
   ];
 
   return (
@@ -33,19 +33,27 @@ export function HeroSection() {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Button size="lg" className="flex items-center space-x-2">
-                <Download className="h-4 w-4" />
-                <span>Download CV</span>
+              <Button size="lg" className="flex items-center space-x-2" asChild>
+                <a href="/cv-lyncoln-carmo.pdf" download="Lyncoln-Carmo-CV.pdf">
+                  <Download className="h-4 w-4" />
+                  <span>Download CV</span>
+                </a>
               </Button>
               <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="icon">
-                  <Github className="h-5 w-5" />
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://github.com/lyncolnms" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <Github className="h-5 w-5" />
+                  </a>
                 </Button>
-                <Button variant="ghost" size="icon">
-                  <Linkedin className="h-5 w-5" />
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://www.linkedin.com/in/lyncolnmauricio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
                 </Button>
-                <Button variant="ghost" size="icon">
-                  <Mail className="h-5 w-5" />
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="mailto:lyncolnms@gmail.com" aria-label="Email">
+                    <Mail className="h-5 w-5" />
+                  </a>
                 </Button>
               </div>
             </div>

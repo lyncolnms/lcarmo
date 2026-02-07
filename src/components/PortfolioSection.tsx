@@ -63,7 +63,10 @@ export function PortfolioSection() {
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Meus Projetos</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
+            Meus Projetos
+            <Badge variant="secondary" className="text-sm">Em Breve</Badge>
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Uma seleção dos meus trabalhos mais recentes, demonstrando diferentes
             tecnologias e abordagens de desenvolvimento.

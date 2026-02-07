@@ -218,9 +218,22 @@ export function ResumeSection() {
           <TabsContent value="skills" className="mt-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4">Frontend</h3>
+                <h3 className="text-xl font-semibold mb-4">Mobile Development</h3>
                 <div className="space-y-2">
-                  {["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js", "JavaScript"].map((skill) => (
+                  {[".NET MAUI", "Xamarin.Forms", "Xamarin.Android"].map((skill) => (
+                    <div key={skill} className="flex items-center justify-between">
+                      <span className="text-sm">{skill}</span>
+                      <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                        <div className="h-full bg-primary rounded-full" style={{ width: '95%' }}></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Backend & APIs</h3>
+                <div className="space-y-2">
+                  {["C#", ".NET Core", "ASP.NET", "API REST", "SQL Server", "PostgreSQL"].map((skill) => (
                     <div key={skill} className="flex items-center justify-between">
                       <span className="text-sm">{skill}</span>
                       <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
@@ -231,26 +244,13 @@ export function ResumeSection() {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4">Backend</h3>
+                <h3 className="text-xl font-semibold mb-4">Arquitetura & Padrões</h3>
                 <div className="space-y-2">
-                  {["Node.js", "Python", "C#", ".NET", "PostgreSQL", "MongoDB"].map((skill) => (
+                  {["MVVM", "Clean Architecture", "SOLID", "Git", "Azure DevOps", "CI/CD"].map((skill) => (
                     <div key={skill} className="flex items-center justify-between">
                       <span className="text-sm">{skill}</span>
                       <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full bg-primary rounded-full" style={{ width: '85%' }}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Ferramentas</h3>
-                <div className="space-y-2">
-                  {["Docker", "AWS", "Git", "Figma", "Jest", "CI/CD"].map((skill) => (
-                    <div key={skill} className="flex items-center justify-between">
-                      <span className="text-sm">{skill}</span>
-                      <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full bg-primary rounded-full" style={{ width: '80%' }}></div>
+                        <div className="h-full bg-primary rounded-full" style={{ width: '88%' }}></div>
                       </div>
                     </div>
                   ))}
