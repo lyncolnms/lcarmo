@@ -83,6 +83,7 @@ function TabsTrigger({
   return (
     <button
       role="tab"
+      id={`tab-${value}`}
       aria-selected={isActive}
       aria-controls={`panel-${value}`}
       data-slot="tabs-trigger"
@@ -110,18 +111,17 @@ function TabsContent({
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>) {
   const { value: selectedValue } = useTabs();
-
-  if (selectedValue !== value) {
-    return null;
-  }
+  const isActive = selectedValue === value;
 
   return (
     <div
       role="tabpanel"
       id={`panel-${value}`}
       aria-labelledby={`tab-${value}`}
+      aria-hidden={!isActive}
+      tabIndex={isActive ? 0 : -1}
       data-slot="tabs-content"
-      className={cn("flex-1 outline-none", className)}
+      className={cn("flex-1 outline-none", !isActive && "hidden", className)}
       {...props}
     >
       {children}
