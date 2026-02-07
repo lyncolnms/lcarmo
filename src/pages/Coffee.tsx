@@ -105,6 +105,7 @@ const Coffee: React.FC = () => {
                   <img
                     src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600"
                     alt="Café especial"
+                    loading="lazy"
                     style={{ borderRadius: '10px', boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }}
                   />
                 </figure>
@@ -288,7 +289,7 @@ const Coffee: React.FC = () => {
                         {item.image && (
                           <div className="card-image">
                             <figure className="image is-4by3">
-                              <img src={item.image} alt={item.title} />
+                              <img src={item.image} alt={item.title} loading="lazy" />
                             </figure>
                           </div>
                         )}

@@ -1,17 +1,20 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Calendar, MapPin, GraduationCap, Award } from "lucide-react";
+import { Calendar, MapPin, GraduationCap, Award, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 export function ResumeSection() {
   const [activeTab, setActiveTab] = useState("experience");
+  const [showAllExperiences, setShowAllExperiences] = useState(false);
+  
   const experiences = [
     {
       title: "Desenvolvedor Full Stack Mobile",
       company: "Conexa - Hub de Inovação Aliare",
       period: "04/2024 - 07/2025",
-      location: "Goiânia, GO",
+      location: "Remoto",
       description: "Migração de Xamarin.Forms para .NET MAUI, manutenção e novas interfaces.",
       achievements: [
         "Aplicativo AgriQ: Migração e manutenção",
@@ -23,7 +26,7 @@ export function ResumeSection() {
       title: "Engenheiro de Software",
       company: "Asaas",
       period: "07/2021 - 12/2023",
-      location: "São Paulo, SP",
+      location: "Remoto",
       description: "Desenvolvimento de aplicativos móveis e APIs.",
       achievements: [
         "Aplicativo Asaas: Recursos de pagamento e transferências",
@@ -41,31 +44,71 @@ export function ResumeSection() {
         "Gestor MobVendas: Aplicativo para controle de vendas e estoque",
         "Tecnologias: Xamarin Android, C#, MVVM, SOLID"
       ]
+    },
+    {
+      title: "Programador Web",
+      company: "Yankton Technologies",
+      period: "08/2016 - 05/2017",
+      location: "Londrina, PR",
+      description: "Desenvolvimento de aplicativos mobile híbridos.",
+      achievements: [
+        "Cinemark: Aplicativo para filmes e compras de ingressos",
+        "Santander Universitário: Aplicativo com puzzles para concorrer a bolsas",
+        "Tecnologias: Cordova, Ionic, AngularJS"
+      ]
+    },
+    {
+      title: "Estagiário de Desenvolvimento",
+      company: "Yankton Technologies",
+      period: "12/2015 - 08/2016",
+      location: "Londrina, PR",
+      description: "Desenvolvimento de aplicações web interativas.",
+      achievements: [
+        "OED's: Desenvolvimento de puzzles educacionais web",
+        "Tecnologias: Javascript, AngularJS, HTML5, CSS"
+      ]
+    },
+    {
+      title: "Estagiário de T.I.",
+      company: "Embrapa Soja",
+      period: "07/2013 - 05/2015",
+      location: "Londrina, PR",
+      description: "Desenvolvimento de sistema de gestão empresarial.",
+      achievements: [
+        "SiGCo: Sistema de gerenciamento de competências",
+        "Tecnologias: Java Web, JSF, JPA, Hibernate, PrimeFaces, Spring Security, Wildfly 8"
+      ]
     }
   ];
+
+  const displayedExperiences = showAllExperiences ? experiences : experiences.slice(0, 3);
 
   const education = [
     {
       degree: "Pós-graduação Lato Sensu em Cibersegurança",
       institution: "Pontifícia Universidade Católica do Paraná (PUCPR)",
-      period: "2025 - 2026",
-      location: "Curitiba, PR"
+      period: "2025 - 2026"
     },
     {
       degree: "Graduação em Análise e Desenvolvimento de Sistemas",
       institution: "UniCesumar",
-      period: "2018 - 2020",
-      location: "Maringá, PR"
+      period: "2018 - 2020"
     }
   ];
 
   const certifications = [
-    "Formação Cybersecurity Specialist - DIO.me",
-    "Formação DevOps Fundamentals - DIO.me",
-    "Formação DevOps para Desenvolvedores - desenvolvedor.io",
-    "Desenvolvimento Seguro de Aplicações - Academia Clavis",
-    "Bootcamp Engenheiro de Software - IGTI",
-    "Desenvolvedor Mobile Multiplataforma Xamarin - Alura"
+    { name: "Formação .NET Developer", provider: "DIO.me", url: "https://hermes.dio.me/certificates/U2Z7ZOBL.pdf" },
+    { name: "Cognizant - Mobile Developer", provider: "DIO.me", url: "https://hermes.dio.me/certificates/SWHA0GOS.pdf" },
+    { name: "Network Fundamentals II", provider: "Lets Defend", url: "https://app.letsdefend.io/my-rewards/detail/bbb6c3d648914b57b688cfb2a457ec56" },
+    { name: "Network Fundamentals", provider: "Lets Defend", url: "https://app.letsdefend.io/my-rewards/detail/b966e29f59da471db9da75da73f70012" },
+    { name: "Formação Cybersecurity Specialist", provider: "DIO.me", url: "https://hermes.dio.me/certificates/BSS5XI1S.pdf" },
+    { name: "Formação DevOps Fundamentals", provider: "DIO.me", url: "https://hermes.dio.me/certificates/UQZDNBBE.pdf" },
+    { name: "Formação DevOps para Desenvolvedores", provider: "desenvolvedor.io", url: "https://desenvolvedor.io/certificado/d116a536-1a24-48d9-a7de-34e31e2b6396" },
+    { name: "Desenvolvimento Seguro de Aplicações", provider: "Academia Clavis" },
+    { name: "Bootcamp Engenheiro de Software", provider: "IGTI" },
+    { name: "Desenvolvedor Mobile Multiplataforma Xamarin", provider: "Alura", url: "https://cursos.alura.com.br/user/lyncolnmauricio/career/desenvolvedor-mobile-xamarin/certificate" },
+    { name: "Desenvolvedor Android", provider: "Udemy", url: "https://www.udemy.com/certificate/UC-G8KJADHT" },
+    { name: "Desenvolvedor Android, iOS e WP", provider: "Udemy", url: "https://www.udemy.com/certificate/UC-UPQUDK4G" }
   ];
 
   return (
@@ -88,7 +131,7 @@ export function ResumeSection() {
 
           <TabsContent value="experience" className="mt-8">
             <div className="space-y-6">
-              {experiences.map((exp, index) => (
+              {displayedExperiences.map((exp, index) => (
                 <Card key={index}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
@@ -122,6 +165,28 @@ export function ResumeSection() {
                 </Card>
               ))}
             </div>
+            
+            {experiences.length > 3 && (
+              <div className="flex justify-center mt-8">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setShowAllExperiences(!showAllExperiences)}
+                  className="flex items-center gap-2"
+                >
+                  {showAllExperiences ? (
+                    <>
+                      <ChevronUp className="h-4 w-4" />
+                      Mostrar menos
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="h-4 w-4" />
+                      Carregar mais ({experiences.length - 3} experiências anteriores)
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
           </TabsContent>
 
           <TabsContent value="education" className="mt-8">
@@ -142,10 +207,6 @@ export function ResumeSection() {
                       <span className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
                         {edu.period}
-                      </span>
-                      <span className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        {edu.location}
                       </span>
                     </div>
                   </CardContent>
@@ -214,11 +275,27 @@ export function ResumeSection() {
           <TabsContent value="certifications" className="mt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {certifications.map((cert, index) => (
-                <Card key={index}>
+                <Card key={index} className="hover:shadow-md transition-shadow">
                   <CardContent className="pt-6">
-                    <div className="flex items-start space-x-3">
-                      <Award className="h-5 w-5 text-primary mt-0.5" />
-                      <p className="text-sm">{cert}</p>
+                    <div className="flex items-start justify-between space-x-3">
+                      <div className="flex items-start space-x-3 flex-1">
+                        <Award className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium">{cert.name}</p>
+                          <p className="text-xs text-muted-foreground mt-1">{cert.provider}</p>
+                        </div>
+                      </div>
+                      {cert.url && (
+                        <a 
+                          href={cert.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-primary hover:text-primary/80 transition-colors flex-shrink-0"
+                          aria-label={`Ver certificado ${cert.name}`}
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
