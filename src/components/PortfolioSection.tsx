@@ -63,7 +63,7 @@ export function PortfolioSection() {
         </div>
       </div>
       
-      <div className="container mx-auto px-4" aria-hidden="true" {...({ inert: "" } as any)}>
+      <div className="container mx-auto px-4" aria-hidden="true" {...({ inert: true } as any)}>
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
             Meus Projetos
