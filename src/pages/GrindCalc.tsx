@@ -222,6 +222,13 @@ const GrindCalc: React.FC = () => {
   const [brand, setBrand] = useState<string>('');
   const [model, setModel] = useState<string>('');
 
+  // Define method colors for consistent styling
+  const methodColors = [
+    '#8B4513', '#A0522D', '#CD853F', '#D2691E', '#DEB887',
+    '#F4A460', '#D2B48C', '#BC8F8F', '#F5DEB3', '#FFE4B5',
+    '#DAA520', '#B8860B', '#CD853F'
+  ];
+
   // Helper function to generate settings based on grinder type
   const generateManualGrinderSettings = () => ({
     'Turkish': '1-2',
@@ -739,7 +746,7 @@ const GrindCalc: React.FC = () => {
               <div style={{ marginBottom: '25px' }}>
                 {methods.map((method, index) => {
                   const setting = selectedSettings ? selectedSettings[method] : null;
-                  const color = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#DEB887', '#F4A460', '#D2B48C', '#BC8F8F', '#F5DEB3', '#FFE4B5', '#DAA520', '#B8860B', '#CD853F'][index % 13];
+                  const color = methodColors[index % methodColors.length];
                   
                   return (
                     <div key={method} style={{ 

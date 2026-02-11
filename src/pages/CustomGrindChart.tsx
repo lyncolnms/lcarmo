@@ -154,14 +154,14 @@ const CustomGrindChart: React.FC<CustomGrindChartProps> = ({ methods, settings, 
           barWidth = 20; // Largura fixa para valores únicos
         }
 
-        const y = 60 + index * (barHeight + barSpacing);
+        const barYPosition = 60 + index * (barHeight + barSpacing);
 
         return (
           <g key={method}>
             {/* Retângulo da barra */}
             <rect
               x={barStart}
-              y={y}
+              y={barYPosition}
               width={barWidth}
               height={barHeight}
               fill={methodColors[index % methodColors.length]}
@@ -172,7 +172,7 @@ const CustomGrindChart: React.FC<CustomGrindChartProps> = ({ methods, settings, 
             {/* Nome do método dentro da barra */}
             <text
               x={barStart + barWidth / 2}
-              y={y + barHeight / 2 + 5}
+              y={barYPosition + barHeight / 2 + 5}
               textAnchor="middle"
               fontSize="12"
               fill="white"
@@ -183,7 +183,7 @@ const CustomGrindChart: React.FC<CustomGrindChartProps> = ({ methods, settings, 
             {/* Valor do setting */}
             <text
               x={barStart + barWidth + 10}
-              y={y + barHeight / 2 + 5}
+              y={barYPosition + barHeight / 2 + 5}
               fontSize="11"
               fill="#333"
             >
