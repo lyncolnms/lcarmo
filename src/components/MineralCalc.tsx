@@ -1,4 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
+import { ResultCard } from './ui/result-card';
+import { InstructionCard } from './ui/instruction-card';
 
 /**
  * Calculates alkalinity in mg/L CaCO3 from bicarbonate (mg/L).
