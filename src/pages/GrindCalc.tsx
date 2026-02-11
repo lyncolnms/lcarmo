@@ -16,6 +16,13 @@ interface CustomGrindChartProps {
   parseSetting: (setting: string) => number;
 }
 
+// Shared method colors for consistent styling across components
+const METHOD_COLORS = [
+  '#8B4513', '#A0522D', '#CD853F', '#D2691E', '#DEB887',
+  '#F4A460', '#D2B48C', '#BC8F8F', '#F5DEB3', '#FFE4B5',
+  '#DAA520', '#B8860B', '#CD853F'
+];
+
 const CustomGrindChart: React.FC<CustomGrindChartProps> = ({ methods, settings, parseSetting }) => {
   // Calcular os valores mínimo e máximo para a escala
   const allValues: number[] = [];
@@ -52,13 +59,6 @@ const CustomGrindChart: React.FC<CustomGrindChartProps> = ({ methods, settings, 
   const valueToX = (value: number) => {
     return ((value - chartMin) / (chartMax - chartMin)) * (chartWidth - 100) + 50;
   };
-
-  // Cores para os métodos
-  const methodColors = [
-    '#8B4513', '#A0522D', '#CD853F', '#D2691E', '#DEB887',
-    '#F4A460', '#D2B48C', '#BC8F8F', '#F5DEB3', '#FFE4B5',
-    '#DAA520', '#B8860B', '#CD853F'
-  ];
 
   return (
     <svg width={chartWidth} height={chartHeight} style={{ border: '1px solid #ddd', backgroundColor: '#f9f9f9' }}>
@@ -174,7 +174,7 @@ const CustomGrindChart: React.FC<CustomGrindChartProps> = ({ methods, settings, 
               y={y}
               width={barWidth}
               height={barHeight}
-              fill={methodColors[index % methodColors.length]}
+              fill={METHOD_COLORS[index % METHOD_COLORS.length]}
               stroke="#333"
               strokeWidth="1"
               rx="3"
@@ -234,13 +234,6 @@ const generateManualGrinderSettings = () => ({
   'Cold Brew': '25+',
   'Cold Drip': '22-28'
 });
-
-  // Define method colors for consistent styling
-  const methodColors = [
-    '#8B4513', '#A0522D', '#CD853F', '#D2691E', '#DEB887',
-    '#F4A460', '#D2B48C', '#BC8F8F', '#F5DEB3', '#FFE4B5',
-    '#DAA520', '#B8860B', '#CD853F'
-  ];
 
   // Helper function to generate settings based on grinder type
   const generateManualGrinderSettings = () => ({
@@ -781,7 +774,7 @@ const GrindCalc: React.FC = () => {
               <div style={{ marginBottom: '25px' }}>
                 {methods.map((method, index) => {
                   const setting = selectedSettings ? selectedSettings[method] : null;
-                  const color = methodColors[index % methodColors.length];
+                  const color = METHOD_COLORS[index % METHOD_COLORS.length];
                   
                   return (
                     <div key={method} style={{ 

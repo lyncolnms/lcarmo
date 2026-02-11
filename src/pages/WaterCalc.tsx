@@ -74,6 +74,7 @@ const WaterCalc: React.FC = () => {
     const parsedFinalCoffeeVolume = parseFloat(finalCoffee);
     const parsedCoffeePowderWeight = parseFloat(coffeePowder);
     const parsedWaterRatio = parseFloat(ratio);
+    const parsedWaterVolume = parseFloat(water);
 
     // Calcular água baseada em pó de café e proporção
     if (!isNaN(parsedCoffeePowderWeight) && !isNaN(parsedWaterRatio) && finalCoffee === '') {
@@ -94,8 +95,7 @@ const WaterCalc: React.FC = () => {
       setWater(parsedFinalCoffeeVolume.toFixed(1));
     }
     // Calcular café final baseado em água e proporção
-    else if (!isNaN(parseFloat(water)) && !isNaN(parsedWaterRatio) && finalCoffee === '') {
-      const parsedWaterVolume = parseFloat(water);
+    else if (!isNaN(parsedWaterVolume) && !isNaN(parsedWaterRatio) && finalCoffee === '') {
       setFinalCoffee(parsedWaterVolume.toFixed(1));
       setCoffeePowder((parsedWaterVolume / parsedWaterRatio).toFixed(1));
     }
