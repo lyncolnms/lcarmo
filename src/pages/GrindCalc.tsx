@@ -310,345 +310,345 @@ const grinders: Grinders = {
       'X-Ultra': generateManualGrinderSettings(),
       'ZP6': generateManualGrinderSettings(),
       'ZP6 Special': generateManualGrinderSettings()
-    },
-    'Acaia': {
-      'Orbit': generatePremiumGrinderSettings()
-    },
-    'Anfim': {
-      'Best': generatePremiumGrinderSettings()
-    },
-    'Balmuda': {
-      'Coffee Mill': generateManualGrinderSettings()
-    },
-    'Baratza': {
-      'Encore': generateElectricGrinderSettings(),
-      'Encore ESP': generateElectricGrinderSettings(),
-      'Forté AP': generateElectricGrinderSettings(),
-      'Forté BG': generateElectricGrinderSettings(),
-      'Maestro': generatePremiumGrinderSettings(),
-      'Maestro Plus': generatePremiumGrinderSettings(),
-      'Preciso': generatePremiumGrinderSettings(),
-      'Sette 270': generateElectricGrinderSettings(),
-      'Sette 270 W': generateElectricGrinderSettings(),
-      'Sette 270 Wi': generateElectricGrinderSettings(),
-      'Sette 30': generateElectricGrinderSettings(),
-      'Starbucks Barista': generateElectricGrinderSettings(),
-      'Vario': generateElectricGrinderSettings(),
-      'Vario+': generateElectricGrinderSettings(),
-      'Vario W': generateElectricGrinderSettings(),
-      'Vario W+': generateElectricGrinderSettings(),
-      'Virtuoso': generateElectricGrinderSettings(),
-      'Virtuoso+': generateElectricGrinderSettings()
-    },
-    'Barista & Co': {
-      'Core All Grind': generateManualGrinderSettings()
-    },
-    'Barista Space': {
-      'Premium Coffee Hand Grinder': generateManualGrinderSettings()
-    },
-    'BelleLife': {
-      'Electric Coffee Grinder': generateElectricGrinderSettings()
-    },
-    'Bentwood': {
-      'Vertical 63': generateManualGrinderSettings()
-    },
-    'Bodum': {
-      'Bistro 10903': generateElectricGrinderSettings()
-    },
-    'Breville (Sage)': {
-      'The Dose Control Pro': generatePremiumGrinderSettings(),
-      'The Smart Grinder Pro': generatePremiumGrinderSettings()
-    },
-    'Cafflano': {
-      'Grinder': generateManualGrinderSettings()
-    },
-    'Capresso': {
-      'Infinity': generateElectricGrinderSettings(),
-      'Infinity Plus': generateElectricGrinderSettings()
-    },
-    'Comandante': {
-      'C40 MK4': generateManualGrinderSettings(),
-      'C40 MK4 (with Red Clix)': generateManualGrinderSettings(),
-      'C60 Baracuda': generateManualGrinderSettings(),
-      'C60 Baracuda (with Gold Clix)': generateManualGrinderSettings(),
-      'X25 Trailmaster': generateManualGrinderSettings(),
-      'X25 Trailmaster (with Red Clix)': generateManualGrinderSettings()
-    },
-    'Compak': {
-      'K3 Push': generatePremiumGrinderSettings(),
-      'K3 Touch': generatePremiumGrinderSettings(),
-      'K3 Touch Advanced': generatePremiumGrinderSettings()
-    },
-    'Cores': {
-      'Cone Grinder C330': generateManualGrinderSettings()
-    },
-    'Cuisinart': {
-      'CBM-18': generateElectricGrinderSettings(),
-      'DBM-8': generateElectricGrinderSettings()
-    },
-    'De\'Longhi': {
-      'KG79': generateElectricGrinderSettings(),
-      'KG89': generateElectricGrinderSettings()
-    },
-    'Epeios': {
-      'Essense Go': generateManualGrinderSettings()
-    },
-    'Etzinger': {
-      'etz-I (Regular)': generateManualGrinderSettings(),
-      'etz-I (Trim)': generateManualGrinderSettings(),
-      'etz-U': generateManualGrinderSettings()
-    },
-    'Eureka': {
-      'Atom 60': generatePremiumGrinderSettings(),
-      'Atom 75': generatePremiumGrinderSettings(),
-      'Drogheria MCD4': generatePremiumGrinderSettings(),
-      'Mignon Classico': generatePremiumGrinderSettings(),
-      'Mignon Oro': generatePremiumGrinderSettings(),
-      'Mignon Oro XL': generatePremiumGrinderSettings(),
-      'Mignon Silenzio': generatePremiumGrinderSettings(),
-      'Mignon Specialità': generatePremiumGrinderSettings()
-    },
-    'Fellow': {
-      'Ode Brew Grinder Gen 1': generatePremiumGrinderSettings(),
-      'Ode Brew Grinder Gen 2': generatePremiumGrinderSettings(),
-      'Opus': generatePremiumGrinderSettings()
-    },
-    'Fiorenzato': {
-      'Pietro': generatePremiumGrinderSettings()
-    },
-    'Fiorenzato (Sanremo)': {
-      'Allground': generatePremiumGrinderSettings(),
-      'Allground Sense': generatePremiumGrinderSettings()
-    },
-    'Flair Espresso': {
-      'Royal Grinder': generateManualGrinderSettings()
-    },
-    'Fuji Royal': {
-      'R-220': generateManualGrinderSettings()
-    },
-    'Goat Story': {
-      'Arco': generateManualGrinderSettings()
-    },
-    'Handground': {
-      'Precision Coffee Grinder': generateManualGrinderSettings()
-    },
-    'Hario': {
-      'Mini Mill': generateManualGrinderSettings(),
-      'Mini Mill PLUS': generateManualGrinderSettings(),
-      'Mini Mill Slim': generateManualGrinderSettings(),
-      'Mini Mill Slim PRO': generateManualGrinderSettings(),
-      'Skerton': generateManualGrinderSettings(),
-      'Skerton PLUS': generateManualGrinderSettings(),
-      'Skerton PRO': generateManualGrinderSettings(),
-      'Smart-G': generateManualGrinderSettings(),
-      'V60 EVC-8B': generateManualGrinderSettings(),
-      'V60 EVCG-8B-E': generateManualGrinderSettings()
-    },
-    'Helor': {
-      '101': generateManualGrinderSettings(),
-      '106 Flux': generateManualGrinderSettings()
-    },
-    'HeyCafé': {
-      'H1': generateManualGrinderSettings()
-    },
-    'Hongbei': {
-      'Coffee Grinder': generateManualGrinderSettings()
-    },
-    'JavaPresse': {
-      'Manual Coffee Grinder': generateManualGrinderSettings()
-    },
-    'Joy Resolve': {
-      'Groove Compact': generateManualGrinderSettings()
-    },
-    'Kaldi': {
-      'Ceramic Coffee Mill': generateManualGrinderSettings()
-    },
-    'Kalita': {
-      'C-90': generateManualGrinderSettings(),
-      'DIA Coffee Mill': generateManualGrinderSettings(),
-      'Next G': generateManualGrinderSettings(),
-      'Nice Cut G': generateManualGrinderSettings()
-    },
-    'Kanso': {
-      'Hiku': generateManualGrinderSettings()
-    },
-    'KINGrinder': {
-      'K0': generateManualGrinderSettings(),
-      'K1': generateManualGrinderSettings(),
-      'K2': generateManualGrinderSettings(),
-      'K3': generateManualGrinderSettings(),
-      'K4': generateManualGrinderSettings(),
-      'K5': generateManualGrinderSettings(),
-      'K6': generateManualGrinderSettings(),
-      'P0': generateManualGrinderSettings(),
-      'P1': generateManualGrinderSettings(),
-      'P2': generateManualGrinderSettings()
-    },
-    'Kinu': {
-      'M47 Classic': generateManualGrinderSettings(),
-      'M47 Phoenix': generateManualGrinderSettings(),
-      'M47 Simplicity': generateManualGrinderSettings(),
-      'M47 Traveller': generateManualGrinderSettings()
-    },
-    'KitchenAid': {
-      'Artisan Coffee Grinder 5KCG0702': generateElectricGrinderSettings(),
-      'Coffee Grinder 5KCG8433': generateElectricGrinderSettings()
-    },
-    'Knock': {
-      'Aergrind': generateManualGrinderSettings(),
-      'Feld2': generateManualGrinderSettings(),
-      'Feldgrind': generateManualGrinderSettings()
-    },
-    'Krups': {
-      'GVX1': generateElectricGrinderSettings(),
-      'GVX2': generateElectricGrinderSettings(),
-      'GX5000': generateElectricGrinderSettings(),
-      'GX6000': generateElectricGrinderSettings()
-    },
-    'Mahlkönig': {
-      'EK43 (0-16)': generatePremiumGrinderSettings(),
-      'EK43 (1-11)': generatePremiumGrinderSettings(),
-      'EK43 S': generatePremiumGrinderSettings(),
-      'GH2 (HC880)': generatePremiumGrinderSettings(),
-      'VTA 6S': generatePremiumGrinderSettings(),
-      'VTA 6S W': generatePremiumGrinderSettings(),
-      'X54': generatePremiumGrinderSettings()
-    },
-    'Mavo': {
-      'Phantox Pro': generateManualGrinderSettings()
-    },
-    'Mazzer': {
-      'ZM': generatePremiumGrinderSettings(),
-      'ZM Plus': generatePremiumGrinderSettings()
-    },
-    'Melitta': {
-      'Calibra': generateElectricGrinderSettings(),
-      'Molino': generateElectricGrinderSettings()
-    },
-    'MHW-3BOMBER': {
-      'Blade R3': generateManualGrinderSettings()
-    },
-    'MiiCoffee': {
-      'D40+': generateManualGrinderSettings()
-    },
-    'Moccamaster': {
-      'KM5': generateElectricGrinderSettings()
-    },
-    'montwave': {
-      'GU2': generateManualGrinderSettings()
-    },
-    'Mueller': {
-      'Ultra-Grind': generateElectricGrinderSettings()
-    },
-    'Niche': {
-      'Zero': generateManualGrinderSettings()
-    },
-    'Option-O': {
-      'Lagom Mini (Moonshine burrs)': generateManualGrinderSettings(),
-      'Lagom Mini (Obsidian burrs)': generateManualGrinderSettings(),
-      'Lagom P64': generateManualGrinderSettings()
-    },
-    'Orphan Espresso': {
-      'Lido OG': generateManualGrinderSettings()
-    },
-    'OXO': {
-      'Conical Burr Coffee Grinder': generateElectricGrinderSettings()
-    },
-    'Pinecone': {
-      'Pinion': generateManualGrinderSettings()
-    },
-    'Porlex': {
-      'Mini': generateManualGrinderSettings(),
-      'Mini II': generateManualGrinderSettings(),
-      'Tall': generateManualGrinderSettings(),
-      'Tall II': generateManualGrinderSettings()
-    },
-    'Precision': {
-      'GS30': generateManualGrinderSettings()
-    },
-    'Rancilio': {
-      'Rocky': generatePremiumGrinderSettings(),
-      'Rocky SD': generatePremiumGrinderSettings()
-    },
-    'ROK': {
-      'GrinderGC': generateManualGrinderSettings()
-    },
-    'Saint Anthony Industries': {
-      'Millwright Hand Grinder': generateManualGrinderSettings()
-    },
-    'Smeg': {
-      'CGF01': generateElectricGrinderSettings(),
-      'CGF11': generateElectricGrinderSettings()
-    },
-    'Timemore': {
-      'C2': generateManualGrinderSettings(),
-      'C2 Fold': generateManualGrinderSettings(),
-      'C2 Max': generateManualGrinderSettings(),
-      'C2 Max Pro': generateManualGrinderSettings(),
-      'C3': generateManualGrinderSettings(),
-      'C3 ESP': generateManualGrinderSettings(),
-      'C3 ESP Pro': generateManualGrinderSettings(),
-      'C3 Max': generateManualGrinderSettings(),
-      'C3 Max Pro': generateManualGrinderSettings(),
-      'C3 Pro': generateManualGrinderSettings(),
-      'C3S': generateManualGrinderSettings(),
-      'C3S Pro': generateManualGrinderSettings(),
-      'Chestnut X': generateManualGrinderSettings(),
-      'G1': generateManualGrinderSettings(),
-      'G1 Plus': generateManualGrinderSettings(),
-      'Nano': generateManualGrinderSettings(),
-      'S3': generateManualGrinderSettings(),
-      'Sculptor 064': generateManualGrinderSettings(),
-      'Sculptor 064S': generateManualGrinderSettings(),
-      'Sculptor 078': generateManualGrinderSettings(),
-      'Sculptor 078S': generateManualGrinderSettings(),
-      'Slim': generateManualGrinderSettings()
-    },
-    'Timemore x Millab': {
-      'E01': generateManualGrinderSettings(),
-      'M01': generateManualGrinderSettings()
-    },
-    'Turin': {
-      'DF54': generateManualGrinderSettings(),
-      'DF64 (Gen 1)': generateManualGrinderSettings(),
-      'DF64 (Gen 2)': generateManualGrinderSettings(),
-      'DF64V': generateManualGrinderSettings(),
-      'DF83': generateManualGrinderSettings(),
-      'DF83V': generateManualGrinderSettings(),
-      'SD40 V1': generateManualGrinderSettings(),
-      'SD40 V2': generateManualGrinderSettings()
-    },
-    'Varia': {
-      'Evo Hybrid': generateManualGrinderSettings(),
-      'Hand grinder': generateManualGrinderSettings(),
-      'VS3 (Gen 1)': generateManualGrinderSettings(),
-      'VS3 (Gen 2)': generateManualGrinderSettings(),
-      'VS6': generateManualGrinderSettings()
-    },
-    'Vevok Chef': {
-      '06': generateManualGrinderSettings(),
-      '06 Slim': generateManualGrinderSettings()
-    },
-    'VSSL': {
-      'JAVA': generateManualGrinderSettings()
-    },
-    'Wacaco': {
-      'Exagrind': generateManualGrinderSettings()
-    },
-    'Weber Workshops': {
-      'EG-1': generateManualGrinderSettings(),
-      'KEY Mk1': generateManualGrinderSettings()
-    },
-    'Wilfa': {
-      'Balance': generateElectricGrinderSettings(),
-      'Svart': generateElectricGrinderSettings(),
-      'Svart Aroma': generateElectricGrinderSettings(),
-      'Uniform': generateElectricGrinderSettings()
-    },
-    'Zwilling': {
-      'Enfinigy Coffee Grinder': generateElectricGrinderSettings()
-    }
-  };
+  },
+  'Acaia': {
+    'Orbit': generatePremiumGrinderSettings()
+  },
+  'Anfim': {
+    'Best': generatePremiumGrinderSettings()
+  },
+  'Balmuda': {
+    'Coffee Mill': generateManualGrinderSettings()
+  },
+  'Baratza': {
+    'Encore': generateElectricGrinderSettings(),
+    'Encore ESP': generateElectricGrinderSettings(),
+    'Forté AP': generateElectricGrinderSettings(),
+    'Forté BG': generateElectricGrinderSettings(),
+    'Maestro': generatePremiumGrinderSettings(),
+    'Maestro Plus': generatePremiumGrinderSettings(),
+    'Preciso': generatePremiumGrinderSettings(),
+    'Sette 270': generateElectricGrinderSettings(),
+    'Sette 270 W': generateElectricGrinderSettings(),
+    'Sette 270 Wi': generateElectricGrinderSettings(),
+    'Sette 30': generateElectricGrinderSettings(),
+    'Starbucks Barista': generateElectricGrinderSettings(),
+    'Vario': generateElectricGrinderSettings(),
+    'Vario+': generateElectricGrinderSettings(),
+    'Vario W': generateElectricGrinderSettings(),
+    'Vario W+': generateElectricGrinderSettings(),
+    'Virtuoso': generateElectricGrinderSettings(),
+    'Virtuoso+': generateElectricGrinderSettings()
+  },
+  'Barista & Co': {
+    'Core All Grind': generateManualGrinderSettings()
+  },
+  'Barista Space': {
+    'Premium Coffee Hand Grinder': generateManualGrinderSettings()
+  },
+  'BelleLife': {
+    'Electric Coffee Grinder': generateElectricGrinderSettings()
+  },
+  'Bentwood': {
+    'Vertical 63': generateManualGrinderSettings()
+  },
+  'Bodum': {
+    'Bistro 10903': generateElectricGrinderSettings()
+  },
+  'Breville (Sage)': {
+    'The Dose Control Pro': generatePremiumGrinderSettings(),
+    'The Smart Grinder Pro': generatePremiumGrinderSettings()
+  },
+  'Cafflano': {
+    'Grinder': generateManualGrinderSettings()
+  },
+  'Capresso': {
+    'Infinity': generateElectricGrinderSettings(),
+    'Infinity Plus': generateElectricGrinderSettings()
+  },
+  'Comandante': {
+    'C40 MK4': generateManualGrinderSettings(),
+    'C40 MK4 (with Red Clix)': generateManualGrinderSettings(),
+    'C60 Baracuda': generateManualGrinderSettings(),
+    'C60 Baracuda (with Gold Clix)': generateManualGrinderSettings(),
+    'X25 Trailmaster': generateManualGrinderSettings(),
+    'X25 Trailmaster (with Red Clix)': generateManualGrinderSettings()
+  },
+  'Compak': {
+    'K3 Push': generatePremiumGrinderSettings(),
+    'K3 Touch': generatePremiumGrinderSettings(),
+    'K3 Touch Advanced': generatePremiumGrinderSettings()
+  },
+  'Cores': {
+    'Cone Grinder C330': generateManualGrinderSettings()
+  },
+  'Cuisinart': {
+    'CBM-18': generateElectricGrinderSettings(),
+    'DBM-8': generateElectricGrinderSettings()
+  },
+  'De\'Longhi': {
+    'KG79': generateElectricGrinderSettings(),
+    'KG89': generateElectricGrinderSettings()
+  },
+  'Epeios': {
+    'Essense Go': generateManualGrinderSettings()
+  },
+  'Etzinger': {
+    'etz-I (Regular)': generateManualGrinderSettings(),
+    'etz-I (Trim)': generateManualGrinderSettings(),
+    'etz-U': generateManualGrinderSettings()
+  },
+  'Eureka': {
+    'Atom 60': generatePremiumGrinderSettings(),
+    'Atom 75': generatePremiumGrinderSettings(),
+    'Drogheria MCD4': generatePremiumGrinderSettings(),
+    'Mignon Classico': generatePremiumGrinderSettings(),
+    'Mignon Oro': generatePremiumGrinderSettings(),
+    'Mignon Oro XL': generatePremiumGrinderSettings(),
+    'Mignon Silenzio': generatePremiumGrinderSettings(),
+    'Mignon Specialità': generatePremiumGrinderSettings()
+  },
+  'Fellow': {
+    'Ode Brew Grinder Gen 1': generatePremiumGrinderSettings(),
+    'Ode Brew Grinder Gen 2': generatePremiumGrinderSettings(),
+    'Opus': generatePremiumGrinderSettings()
+  },
+  'Fiorenzato': {
+    'Pietro': generatePremiumGrinderSettings()
+  },
+  'Fiorenzato (Sanremo)': {
+    'Allground': generatePremiumGrinderSettings(),
+    'Allground Sense': generatePremiumGrinderSettings()
+  },
+  'Flair Espresso': {
+    'Royal Grinder': generateManualGrinderSettings()
+  },
+  'Fuji Royal': {
+    'R-220': generateManualGrinderSettings()
+  },
+  'Goat Story': {
+    'Arco': generateManualGrinderSettings()
+  },
+  'Handground': {
+    'Precision Coffee Grinder': generateManualGrinderSettings()
+  },
+  'Hario': {
+    'Mini Mill': generateManualGrinderSettings(),
+    'Mini Mill PLUS': generateManualGrinderSettings(),
+    'Mini Mill Slim': generateManualGrinderSettings(),
+    'Mini Mill Slim PRO': generateManualGrinderSettings(),
+    'Skerton': generateManualGrinderSettings(),
+    'Skerton PLUS': generateManualGrinderSettings(),
+    'Skerton PRO': generateManualGrinderSettings(),
+    'Smart-G': generateManualGrinderSettings(),
+    'V60 EVC-8B': generateManualGrinderSettings(),
+    'V60 EVCG-8B-E': generateManualGrinderSettings()
+  },
+  'Helor': {
+    '101': generateManualGrinderSettings(),
+    '106 Flux': generateManualGrinderSettings()
+  },
+  'HeyCafé': {
+    'H1': generateManualGrinderSettings()
+  },
+  'Hongbei': {
+    'Coffee Grinder': generateManualGrinderSettings()
+  },
+  'JavaPresse': {
+    'Manual Coffee Grinder': generateManualGrinderSettings()
+  },
+  'Joy Resolve': {
+    'Groove Compact': generateManualGrinderSettings()
+  },
+  'Kaldi': {
+    'Ceramic Coffee Mill': generateManualGrinderSettings()
+  },
+  'Kalita': {
+    'C-90': generateManualGrinderSettings(),
+    'DIA Coffee Mill': generateManualGrinderSettings(),
+    'Next G': generateManualGrinderSettings(),
+    'Nice Cut G': generateManualGrinderSettings()
+  },
+  'Kanso': {
+    'Hiku': generateManualGrinderSettings()
+  },
+  'KINGrinder': {
+    'K0': generateManualGrinderSettings(),
+    'K1': generateManualGrinderSettings(),
+    'K2': generateManualGrinderSettings(),
+    'K3': generateManualGrinderSettings(),
+    'K4': generateManualGrinderSettings(),
+    'K5': generateManualGrinderSettings(),
+    'K6': generateManualGrinderSettings(),
+    'P0': generateManualGrinderSettings(),
+    'P1': generateManualGrinderSettings(),
+    'P2': generateManualGrinderSettings()
+  },
+  'Kinu': {
+    'M47 Classic': generateManualGrinderSettings(),
+    'M47 Phoenix': generateManualGrinderSettings(),
+    'M47 Simplicity': generateManualGrinderSettings(),
+    'M47 Traveller': generateManualGrinderSettings()
+  },
+  'KitchenAid': {
+    'Artisan Coffee Grinder 5KCG0702': generateElectricGrinderSettings(),
+    'Coffee Grinder 5KCG8433': generateElectricGrinderSettings()
+  },
+  'Knock': {
+    'Aergrind': generateManualGrinderSettings(),
+    'Feld2': generateManualGrinderSettings(),
+    'Feldgrind': generateManualGrinderSettings()
+  },
+  'Krups': {
+    'GVX1': generateElectricGrinderSettings(),
+    'GVX2': generateElectricGrinderSettings(),
+    'GX5000': generateElectricGrinderSettings(),
+    'GX6000': generateElectricGrinderSettings()
+  },
+  'Mahlkönig': {
+    'EK43 (0-16)': generatePremiumGrinderSettings(),
+    'EK43 (1-11)': generatePremiumGrinderSettings(),
+    'EK43 S': generatePremiumGrinderSettings(),
+    'GH2 (HC880)': generatePremiumGrinderSettings(),
+    'VTA 6S': generatePremiumGrinderSettings(),
+    'VTA 6S W': generatePremiumGrinderSettings(),
+    'X54': generatePremiumGrinderSettings()
+  },
+  'Mavo': {
+    'Phantox Pro': generateManualGrinderSettings()
+  },
+  'Mazzer': {
+    'ZM': generatePremiumGrinderSettings(),
+    'ZM Plus': generatePremiumGrinderSettings()
+  },
+  'Melitta': {
+    'Calibra': generateElectricGrinderSettings(),
+    'Molino': generateElectricGrinderSettings()
+  },
+  'MHW-3BOMBER': {
+    'Blade R3': generateManualGrinderSettings()
+  },
+  'MiiCoffee': {
+    'D40+': generateManualGrinderSettings()
+  },
+  'Moccamaster': {
+    'KM5': generateElectricGrinderSettings()
+  },
+  'montwave': {
+    'GU2': generateManualGrinderSettings()
+  },
+  'Mueller': {
+    'Ultra-Grind': generateElectricGrinderSettings()
+  },
+  'Niche': {
+    'Zero': generateManualGrinderSettings()
+  },
+  'Option-O': {
+    'Lagom Mini (Moonshine burrs)': generateManualGrinderSettings(),
+    'Lagom Mini (Obsidian burrs)': generateManualGrinderSettings(),
+    'Lagom P64': generateManualGrinderSettings()
+  },
+  'Orphan Espresso': {
+    'Lido OG': generateManualGrinderSettings()
+  },
+  'OXO': {
+    'Conical Burr Coffee Grinder': generateElectricGrinderSettings()
+  },
+  'Pinecone': {
+    'Pinion': generateManualGrinderSettings()
+  },
+  'Porlex': {
+    'Mini': generateManualGrinderSettings(),
+    'Mini II': generateManualGrinderSettings(),
+    'Tall': generateManualGrinderSettings(),
+    'Tall II': generateManualGrinderSettings()
+  },
+  'Precision': {
+    'GS30': generateManualGrinderSettings()
+  },
+  'Rancilio': {
+    'Rocky': generatePremiumGrinderSettings(),
+    'Rocky SD': generatePremiumGrinderSettings()
+  },
+  'ROK': {
+    'GrinderGC': generateManualGrinderSettings()
+  },
+  'Saint Anthony Industries': {
+    'Millwright Hand Grinder': generateManualGrinderSettings()
+  },
+  'Smeg': {
+    'CGF01': generateElectricGrinderSettings(),
+    'CGF11': generateElectricGrinderSettings()
+  },
+  'Timemore': {
+    'C2': generateManualGrinderSettings(),
+    'C2 Fold': generateManualGrinderSettings(),
+    'C2 Max': generateManualGrinderSettings(),
+    'C2 Max Pro': generateManualGrinderSettings(),
+    'C3': generateManualGrinderSettings(),
+    'C3 ESP': generateManualGrinderSettings(),
+    'C3 ESP Pro': generateManualGrinderSettings(),
+    'C3 Max': generateManualGrinderSettings(),
+    'C3 Max Pro': generateManualGrinderSettings(),
+    'C3 Pro': generateManualGrinderSettings(),
+    'C3S': generateManualGrinderSettings(),
+    'C3S Pro': generateManualGrinderSettings(),
+    'Chestnut X': generateManualGrinderSettings(),
+    'G1': generateManualGrinderSettings(),
+    'G1 Plus': generateManualGrinderSettings(),
+    'Nano': generateManualGrinderSettings(),
+    'S3': generateManualGrinderSettings(),
+    'Sculptor 064': generateManualGrinderSettings(),
+    'Sculptor 064S': generateManualGrinderSettings(),
+    'Sculptor 078': generateManualGrinderSettings(),
+    'Sculptor 078S': generateManualGrinderSettings(),
+    'Slim': generateManualGrinderSettings()
+  },
+  'Timemore x Millab': {
+    'E01': generateManualGrinderSettings(),
+    'M01': generateManualGrinderSettings()
+  },
+  'Turin': {
+    'DF54': generateManualGrinderSettings(),
+    'DF64 (Gen 1)': generateManualGrinderSettings(),
+    'DF64 (Gen 2)': generateManualGrinderSettings(),
+    'DF64V': generateManualGrinderSettings(),
+    'DF83': generateManualGrinderSettings(),
+    'DF83V': generateManualGrinderSettings(),
+    'SD40 V1': generateManualGrinderSettings(),
+    'SD40 V2': generateManualGrinderSettings()
+  },
+  'Varia': {
+    'Evo Hybrid': generateManualGrinderSettings(),
+    'Hand grinder': generateManualGrinderSettings(),
+    'VS3 (Gen 1)': generateManualGrinderSettings(),
+    'VS3 (Gen 2)': generateManualGrinderSettings(),
+    'VS6': generateManualGrinderSettings()
+  },
+  'Vevok Chef': {
+    '06': generateManualGrinderSettings(),
+    '06 Slim': generateManualGrinderSettings()
+  },
+  'VSSL': {
+    'JAVA': generateManualGrinderSettings()
+  },
+  'Wacaco': {
+    'Exagrind': generateManualGrinderSettings()
+  },
+  'Weber Workshops': {
+    'EG-1': generateManualGrinderSettings(),
+    'KEY Mk1': generateManualGrinderSettings()
+  },
+  'Wilfa': {
+    'Balance': generateElectricGrinderSettings(),
+    'Svart': generateElectricGrinderSettings(),
+    'Svart Aroma': generateElectricGrinderSettings(),
+    'Uniform': generateElectricGrinderSettings()
+  },
+  'Zwilling': {
+    'Enfinigy Coffee Grinder': generateElectricGrinderSettings()
+  }
+};
 
 const GrindCalc: React.FC = () => {
   const [brand, setBrand] = useState<string>('');
