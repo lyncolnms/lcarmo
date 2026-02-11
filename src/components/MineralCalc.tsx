@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 
 /**
  * Calculates alkalinity in mg/L CaCO3 from bicarbonate (mg/L).
@@ -132,7 +132,7 @@ export function MineralCalc() {
     );
   };
 
-  const calculateBlend = (): BlendResult | null => {
+  const calculateBlend = useCallback((): BlendResult | null => {
     const targetAlk = parseFloat(targetAlkalinity);
     const volume = parseFloat(targetVolume);
 
@@ -207,9 +207,9 @@ export function MineralCalc() {
     let bestError = Infinity;
 
     // Gerar combinações possíveis usando programação dinâmica simplificada
-    // Make the number of iterations adaptive to the number of sources for better scalability.
-    // For 3 sources: 2000, for 4: 4000, for 5: 8000, etc.
-    const iterations = Math.max(2000, 2000 * Math.pow(2, sources.length - 3));
+    // Cap iterations at 5000 to prevent exponential growth and UI freezing
+    // Use more efficient sampling strategy for larger source counts
+    const iterations = Math.min(5000, Math.max(2000, 2000 * Math.pow(1.5, sources.length - 3)));
     
     for (let i = 0; i < iterations; i++) {
       const proportions: number[] = [];
@@ -266,9 +266,9 @@ export function MineralCalc() {
     }
     
     return bestResult;
-  };
+  }, [updatedSources, targetAlkalinity, targetVolume]);
 
-  const blendResult = calculateBlend();
+  const blendResult = useMemo(() => calculateBlend(), [calculateBlend]);
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
