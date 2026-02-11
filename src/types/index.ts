@@ -31,8 +31,8 @@ export interface WaterSource {
  * Represents the result of blending water sources.
  */
 export interface BlendResult {
-  amounts: { [waterId: string]: number };
-  percentages: { [waterId: string]: number };
+  amounts: Record<string, number>;
+  percentages: Record<string, number>;
   finalAlkalinity: number;
   finalHardness: number;
   finalCalcium: number;
