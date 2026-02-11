@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 interface GrinderSettings {
   [method: string]: string;
@@ -218,76 +218,61 @@ const CustomGrindChart: React.FC<CustomGrindChartProps> = ({ methods, settings, 
   );
 };
 
-const GrindCalc: React.FC = () => {
-  const [brand, setBrand] = useState<string>('');
-  const [model, setModel] = useState<string>('');
+// Helper functions to generate settings based on grinder type (moved outside component to avoid recreation)
+const generateManualGrinderSettings = () => ({
+  'Turkish': '1-2',
+  'Espresso': '5-8',
+  'Filter Coffee Machine': '10-15',
+  'AeroPress': '8-12',
+  'Moka Pot': '6-10',
+  'Siphon': '9-13',
+  'V60': '10-12',
+  'Pour-over': '11-14',
+  'Steep-and-release': '12-14',
+  'Cupping': '13-15',
+  'French Press': '18-25',
+  'Cold Brew': '25+',
+  'Cold Drip': '22-28'
+});
 
-  // Helper function to generate settings based on grinder type
-  const generateManualGrinderSettings = () => ({
-    'Turkish': '1-2',
-    'Espresso': '5-8',
-    'Filter Coffee Machine': '10-15',
-    'AeroPress': '8-12',
-    'Moka Pot': '6-10',
-    'Siphon': '9-13',
-    'V60': '10-12',
-    'Pour-over': '11-14',
-    'Steep-and-release': '12-14',
-    'Cupping': '13-15',
-    'French Press': '18-25',
-    'Cold Brew': '25+',
-    'Cold Drip': '22-28'
-  });
+const generateElectricGrinderSettings = () => ({
+  'Turkish': '1-2',
+  'Espresso': '8-12',
+  'Filter Coffee Machine': '15-20',
+  'AeroPress': '12-18',
+  'Moka Pot': '10-15',
+  'Siphon': '13-17',
+  'V60': '14-16',
+  'Pour-over': '15-19',
+  'Steep-and-release': '16-18',
+  'Cupping': '17-19',
+  'French Press': '25-30',
+  'Cold Brew': '30+',
+  'Cold Drip': '28-32'
+});
 
-  const generateElectricGrinderSettings = () => ({
-    'Turkish': '1-2',
-    'Espresso': '8-12',
-    'Filter Coffee Machine': '15-20',
-    'AeroPress': '12-18',
-    'Moka Pot': '10-15',
-    'Siphon': '13-17',
-    'V60': '14-16',
-    'Pour-over': '15-19',
-    'Steep-and-release': '16-18',
-    'Cupping': '17-19',
-    'French Press': '25-30',
-    'Cold Brew': '30+',
-    'Cold Drip': '28-32'
-  });
+const generatePremiumGrinderSettings = () => ({
+  'Turkish': '1-2',
+  'Espresso': '10-15',
+  'Filter Coffee Machine': '18-25',
+  'AeroPress': '15-22',
+  'Moka Pot': '12-18',
+  'Siphon': '16-20',
+  'V60': '17-19',
+  'Pour-over': '18-22',
+  'Steep-and-release': '19-21',
+  'Cupping': '20-22',
+  'French Press': '28-35',
+  'Cold Brew': '35+',
+  'Cold Drip': '32-38'
+});
 
-  const generatePremiumGrinderSettings = () => ({
-    'Turkish': '1-2',
-    'Espresso': '10-15',
-    'Filter Coffee Machine': '18-25',
-    'AeroPress': '15-22',
-    'Moka Pot': '12-18',
-    'Siphon': '16-20',
-    'V60': '17-19',
-    'Pour-over': '18-22',
-    'Steep-and-release': '19-21',
-    'Cupping': '20-22',
-    'French Press': '28-35',
-    'Cold Brew': '35+',
-    'Cold Drip': '32-38'
-  });
-
-  // Function to parse grinder settings for chart
-  const parseSetting = (setting: string): number => {
-    if (setting.includes('-')) {
-      const [min, max] = setting.split('-').map(Number);
-      return (min + max) / 2;
-    } else if (setting.includes('+')) {
-      return Number(setting.replace('+', ''));
-    } else {
-      return Number(setting) || 0;
-    }
-  };
-
-  const grinders: Grinders = {
-    '1Zpresso': {
-      'J-Max': generateManualGrinderSettings(),
-      'J-Max S': generateManualGrinderSettings(),
-      'J-Ultra': generateManualGrinderSettings(),
+// Large grinders dataset moved outside component to prevent recreation on every render
+const grinders: Grinders = {
+  '1Zpresso': {
+    'J-Max': generateManualGrinderSettings(),
+    'J-Max S': generateManualGrinderSettings(),
+    'J-Ultra': generateManualGrinderSettings(),
       'JE': generateManualGrinderSettings(),
       'JX': generateManualGrinderSettings(),
       'JX S': generateManualGrinderSettings(),
@@ -646,6 +631,22 @@ const GrindCalc: React.FC = () => {
     }
   };
 
+const GrindCalc: React.FC = () => {
+  const [brand, setBrand] = useState<string>('');
+  const [model, setModel] = useState<string>('');
+
+  // Function to parse grinder settings for chart
+  const parseSetting = (setting: string): number => {
+    if (setting.includes('-')) {
+      const [min, max] = setting.split('-').map(Number);
+      return (min + max) / 2;
+    } else if (setting.includes('+')) {
+      return Number(setting.replace('+', ''));
+    } else {
+      return Number(setting) || 0;
+    }
+  };
+
   const methods = [
     'Turkish', 'Espresso', 'Filter Coffee Machine', 'AeroPress', 'Moka Pot',
     'Siphon', 'V60', 'Pour-over', 'Steep-and-release', 'Cupping',
@@ -653,6 +654,22 @@ const GrindCalc: React.FC = () => {
   ];
 
   const selectedSettings = brand && model && grinders[brand] && grinders[brand][model] ? grinders[brand][model] : null;
+
+  // Memoize statistics calculations to avoid redundant processing on every render
+  const statistics = useMemo(() => {
+    if (!selectedSettings) return null;
+    
+    const settings = methods.map(m => parseSetting(selectedSettings[m] || '0'));
+    const minSetting = Math.min(...settings);
+    const maxSetting = Math.max(...settings);
+    
+    return {
+      minSetting,
+      maxSetting,
+      range: maxSetting - minSetting
+    };
+  }, [selectedSettings]);
+
 
   return (
     <main className="coffee-theme">
@@ -813,16 +830,16 @@ const GrindCalc: React.FC = () => {
                   <div style={{ marginBottom: '6px' }}>
                     <strong>Total methods:</strong> {methods.length}
                   </div>
-                  {selectedSettings && (
+                  {statistics && (
                     <>
                       <div style={{ marginBottom: '6px' }}>
-                        <strong>Min setting:</strong> {Math.min(...methods.map(m => parseSetting(selectedSettings[m] || '0')))}
+                        <strong>Min setting:</strong> {statistics.minSetting}
                       </div>
                       <div style={{ marginBottom: '6px' }}>
-                        <strong>Max setting:</strong> {Math.max(...methods.map(m => parseSetting(selectedSettings[m] || '0')))}
+                        <strong>Max setting:</strong> {statistics.maxSetting}
                       </div>
                       <div>
-                        <strong>Range:</strong> {Math.max(...methods.map(m => parseSetting(selectedSettings[m] || '0'))) - Math.min(...methods.map(m => parseSetting(selectedSettings[m] || '0')))} units
+                        <strong>Range:</strong> {statistics.range} units
                       </div>
                     </>
                   )}
