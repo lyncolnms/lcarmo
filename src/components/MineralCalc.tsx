@@ -6,6 +6,8 @@ import {
   calculateMagnesiumHardness 
 } from '../lib/calculations';
 import type { WaterSource, BlendResult } from '../types';
+import { ResultCard } from './ui/result-card';
+import { InstructionCard } from './ui/instruction-card';
 
 export function MineralCalc() {
   const [waterSources, setWaterSources] = useState<WaterSource[]>([
@@ -362,9 +364,7 @@ export function MineralCalc() {
 
           {/* Resultado do Blend */}
           {blendResult ? (
-            <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-3">Resultado do Blend</h4>
-
+            <ResultCard title="Resultado do Blend" variant="info">
               <div className="space-y-3">
                 {updatedSources.map(source => {
                   const amount = blendResult.amounts[source.id] || 0;
@@ -403,44 +403,42 @@ export function MineralCalc() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ResultCard>
           ) : (
             updatedSources.length >= 2 && parseFloat(targetAlkalinity) > 0 && parseFloat(targetVolume) > 0 && (
-              <div className="bg-yellow-50 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-                <h4 className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">⚠️ Não é possível calcular o blend</h4>
-                <ul className="text-sm text-yellow-800 dark:text-yellow-200 space-y-1">
+              <ResultCard title="⚠️ Não é possível calcular o blend" variant="warning">
+                <ul className="text-sm space-y-1">
                   <li>• Verifique se os valores das águas estão corretos</li>
                   <li>• A alcalinidade alvo deve estar dentro do range das águas disponíveis</li>
                   <li>• Certifique-se de ter pelo menos 2 águas com valores diferentes</li>
                 </ul>
-              </div>
+              </ResultCard>
             )
           )}
 
           {/* Recomendações SCA */}
-          <div className="bg-muted/50 rounded-lg p-4">
-            <h4 className="font-semibold mb-2">Recomendações SCA</h4>
-            <div className="text-sm text-muted-foreground space-y-1">
-              <div><strong>Alcalinidade:</strong> 40-75 mg/L (torra clara), 75-150 mg/L (torra escura)</div>
-              <div><strong>Dureza Total:</strong> 50-150 mg/L CaCO₃</div>
-              <div><strong>Relação Ca:Mg:</strong> 2:1 a 4:1</div>
-            </div>
-          </div>
+          <InstructionCard
+            title="Recomendações SCA"
+            steps={[
+              'Alcalinidade: 40-75 mg/L (torra clara), 75-150 mg/L (torra escura)',
+              'Dureza Total: 50-150 mg/L CaCO₃',
+              'Relação Ca:Mg: 2:1 a 4:1'
+            ]}
+          />
         </div>
       </div>
 
       {/* Instruções */}
-      <div className="bg-muted/50 rounded-lg p-4">
-        <h4 className="font-semibold mb-2">Como usar:</h4>
-        <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
-          <li>Adicione quantas águas desejar usando o botão "+ Adicionar Água"</li>
-          <li>Insira os valores de bicarbonato, cálcio e magnésio para cada água</li>
-          <li>Defina a alcalinidade alvo desejada (recomendado: 40-75 mg/L)</li>
-          <li>Especifique o volume total necessário</li>
-          <li>O calculador determinará as proporções ótimas de cada água</li>
-          <li>Para 2 águas: cálculo exato | Para 3+ águas: otimização por aproximação</li>
-        </ol>
-      </div>
+      <InstructionCard
+        steps={[
+          'Adicione quantas águas desejar usando o botão "+ Adicionar Água"',
+          'Insira os valores de bicarbonato, cálcio e magnésio para cada água',
+          'Defina a alcalinidade alvo desejada (recomendado: 40-75 mg/L)',
+          'Especifique o volume total necessário',
+          'O calculador determinará as proporções ótimas de cada água',
+          'Para 2 águas: cálculo exato | Para 3+ águas: otimização por aproximação'
+        ]}
+      />
     </div>
   );
 }

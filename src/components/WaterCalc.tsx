@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BREW_METHODS } from '../lib/constants';
+import { ResultCard } from './ui/result-card';
+import { InstructionCard } from './ui/instruction-card';
 
 export function WaterCalc() {
   const [selectedMethod, setSelectedMethod] = useState<string>('');
@@ -84,15 +86,12 @@ export function WaterCalc() {
 
         {/* Sugestões baseadas no método */}
         {selectedMethodData && (
-          <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-            <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
-              Sugestões para {selectedMethodData.name}:
-            </h4>
-            <ul className="space-y-1 text-sm text-blue-800 dark:text-blue-200">
+          <ResultCard title={`Sugestões para ${selectedMethodData.name}:`} variant="info">
+            <ul className="space-y-1 text-sm">
               <li><strong>Moagem:</strong> {selectedMethodData.grindSize}</li>
               <li><strong>Proporção sugerida:</strong> 1:{selectedMethodData.ratio}</li>
             </ul>
-          </div>
+          </ResultCard>
         )}
 
         {/* Campos de entrada */}
@@ -153,8 +152,7 @@ export function WaterCalc() {
 
         {/* Resultados */}
         {water && (
-          <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-            <h4 className="font-semibold text-green-900 dark:text-green-100 mb-3">Resultado do Cálculo</h4>
+          <ResultCard title="Resultado do Cálculo">
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div><strong>Café Final:</strong> {finalCoffee} ml</div>
               <div><strong>Pó de Café:</strong> {coffeePowder} g</div>
@@ -163,19 +161,18 @@ export function WaterCalc() {
             <div className="mt-3 p-3 bg-green-100 dark:bg-green-900/30 rounded-md">
               <strong>Água necessária:</strong> {water} ml
             </div>
-          </div>
+          </ResultCard>
         )}
 
         {/* Instruções */}
-        <div className="bg-muted/50 rounded-lg p-4">
-          <h4 className="font-semibold mb-2">Como usar:</h4>
-          <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
-            <li>Selecione o método de preparo desejado</li>
-            <li>Preencha pelo menos um dos campos (café final, pó de café ou proporção)</li>
-            <li>Clique em "Calcular" para obter os valores restantes</li>
-            <li>Use as sugestões de moagem e proporção para melhores resultados</li>
-          </ol>
-        </div>
+        <InstructionCard
+          steps={[
+            'Selecione o método de preparo desejado',
+            'Preencha pelo menos um dos campos (café final, pó de café ou proporção)',
+            'Clique em "Calcular" para obter os valores restantes',
+            'Use as sugestões de moagem e proporção para melhores resultados'
+          ]}
+        />
       </div>
     </div>
   );

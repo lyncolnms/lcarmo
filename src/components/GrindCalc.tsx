@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ResultCard } from './ui/result-card';
+import { InstructionCard } from './ui/instruction-card';
 
 interface GrinderSettings {
   [method: string]: string;
@@ -131,10 +133,7 @@ export function GrindCalc() {
 
         {/* Resultado */}
         {setting && (
-          <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-            <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2">
-              Configuração Recomendada
-            </h4>
+          <ResultCard title="Configuração Recomendada">
             <div className="text-lg">
               <strong>{selectedBrand} {selectedModel}</strong> - <strong>{selectedMethod}</strong>
             </div>
@@ -143,10 +142,10 @@ export function GrindCalc() {
                 Configuração: {setting}
               </span>
             </div>
-            <p className="text-sm text-green-700 dark:text-green-300 mt-2">
+            <p className="text-sm mt-2">
               Use esta configuração como ponto de partida e ajuste conforme seu gosto pessoal.
             </p>
-          </div>
+          </ResultCard>
         )}
 
         {/* Tabela de referência */}
@@ -174,16 +173,15 @@ export function GrindCalc() {
         )}
 
         {/* Instruções */}
-        <div className="bg-muted/50 rounded-lg p-4">
-          <h4 className="font-semibold mb-2">Como usar:</h4>
-          <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
-            <li>Selecione a marca do seu moedor</li>
-            <li>Escolha o modelo específico</li>
-            <li>Selecione o método de preparo</li>
-            <li>Use a configuração recomendada como ponto de partida</li>
-            <li>Ajuste conforme necessário para obter o resultado desejado</li>
-          </ol>
-        </div>
+        <InstructionCard
+          steps={[
+            'Selecione a marca do seu moedor',
+            'Escolha o modelo específico',
+            'Selecione o método de preparo',
+            'Use a configuração recomendada como ponto de partida',
+            'Ajuste conforme necessário para obter o resultado desejado'
+          ]}
+        />
       </div>
     </div>
   );
