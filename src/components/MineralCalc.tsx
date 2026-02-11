@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 
 /**
  * Calculates alkalinity in mg/L CaCO3 from bicarbonate (mg/L).
@@ -132,7 +132,7 @@ export function MineralCalc() {
     );
   };
 
-  const calculateBlend = (): BlendResult | null => {
+  const calculateBlend = useCallback((): BlendResult | null => {
     const targetAlk = parseFloat(targetAlkalinity);
     const volume = parseFloat(targetVolume);
 
@@ -266,9 +266,9 @@ export function MineralCalc() {
     }
     
     return bestResult;
-  };
+  }, [updatedSources, targetAlkalinity, targetVolume]);
 
-  const blendResult = useMemo(() => calculateBlend(), [waterSources, targetAlkalinity, targetVolume]);
+  const blendResult = useMemo(() => calculateBlend(), [calculateBlend]);
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
