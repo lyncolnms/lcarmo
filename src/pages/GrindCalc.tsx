@@ -267,6 +267,25 @@ const generatePremiumGrinderSettings = () => ({
   'Cold Drip': '32-38'
 });
 
+// Function to parse grinder settings for chart (moved outside component)
+const parseSetting = (setting: string): number => {
+  if (setting.includes('-')) {
+    const [min, max] = setting.split('-').map(Number);
+    return (min + max) / 2;
+  } else if (setting.includes('+')) {
+    return Number(setting.replace('+', ''));
+  } else {
+    return Number(setting) || 0;
+  }
+};
+
+// Brewing methods array (moved outside component)
+const methods = [
+  'Turkish', 'Espresso', 'Filter Coffee Machine', 'AeroPress', 'Moka Pot',
+  'Siphon', 'V60', 'Pour-over', 'Steep-and-release', 'Cupping',
+  'French Press', 'Cold Brew', 'Cold Drip'
+];
+
 // Large grinders dataset moved outside component to prevent recreation on every render
 const grinders: Grinders = {
   '1Zpresso': {
@@ -634,24 +653,6 @@ const grinders: Grinders = {
 const GrindCalc: React.FC = () => {
   const [brand, setBrand] = useState<string>('');
   const [model, setModel] = useState<string>('');
-
-  // Function to parse grinder settings for chart
-  const parseSetting = (setting: string): number => {
-    if (setting.includes('-')) {
-      const [min, max] = setting.split('-').map(Number);
-      return (min + max) / 2;
-    } else if (setting.includes('+')) {
-      return Number(setting.replace('+', ''));
-    } else {
-      return Number(setting) || 0;
-    }
-  };
-
-  const methods = [
-    'Turkish', 'Espresso', 'Filter Coffee Machine', 'AeroPress', 'Moka Pot',
-    'Siphon', 'V60', 'Pour-over', 'Steep-and-release', 'Cupping',
-    'French Press', 'Cold Brew', 'Cold Drip'
-  ];
 
   const selectedSettings = brand && model && grinders[brand] && grinders[brand][model] ? grinders[brand][model] : null;
 

@@ -192,7 +192,7 @@ export function ResumeSection() {
           <TabsContent value="education" className="mt-8">
             <div className="grid md:grid-cols-2 gap-6">
               {education.map((edu) => (
-                <Card key={edu.degree + edu.institution}>
+                <Card key={`${edu.degree}-${edu.institution}`}>
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       <GraduationCap className="h-5 w-5 mr-2" />
