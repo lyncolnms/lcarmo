@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-interface BrewMethod {
-  name: string;
-  grindSize: string;
-  ratio: number;
-  description: string;
-}
+import { BREW_METHODS } from '../lib/constants';
 
 export function WaterCalc() {
   const [selectedMethod, setSelectedMethod] = useState<string>('');
@@ -14,52 +8,7 @@ export function WaterCalc() {
   const [ratio, setRatio] = useState<string>('');
   const [water, setWater] = useState<string>('');
 
-  const brewMethods: BrewMethod[] = [
-    {
-      name: 'V60',
-      grindSize: 'Médio-fino (como sal marinho)',
-      ratio: 16,
-      description: 'Pour-over clássico'
-    },
-    {
-      name: 'Chemex',
-      grindSize: 'Médio (como areia grossa)',
-      ratio: 17,
-      description: 'Pour-over com papel'
-    },
-    {
-      name: 'AeroPress',
-      grindSize: 'Fino (como açúcar refinado)',
-      ratio: 13,
-      description: 'Imersão rápida'
-    },
-    {
-      name: 'French Press',
-      grindSize: 'Grosso (como sal grosso)',
-      ratio: 12,
-      description: 'Imersão completa'
-    },
-    {
-      name: 'Moka Pot',
-      grindSize: 'Médio-fino',
-      ratio: 10,
-      description: 'Extração pressurizada'
-    },
-    {
-      name: 'Espresso',
-      grindSize: 'Muito fino (como farinha)',
-      ratio: 2,
-      description: 'Extração sob pressão'
-    },
-    {
-      name: 'Cold Brew',
-      grindSize: 'Grosso',
-      ratio: 8,
-      description: 'Extração fria'
-    }
-  ];
-
-  const selectedMethodData = brewMethods.find(method => method.name === selectedMethod);
+  const selectedMethodData = BREW_METHODS.find(method => method.name === selectedMethod);
 
   // Atualizar sugestões quando método mudar
   useEffect(() => {
@@ -125,7 +74,7 @@ export function WaterCalc() {
             className="w-full p-3 border rounded-md bg-background"
           >
             <option value="">Selecione um método...</option>
-            {brewMethods.map(method => (
+            {BREW_METHODS.map(method => (
               <option key={method.name} value={method.name}>
                 {method.name} - {method.description}
               </option>

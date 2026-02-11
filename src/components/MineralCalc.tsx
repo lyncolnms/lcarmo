@@ -1,54 +1,11 @@
 import React, { useState, useMemo } from 'react';
-
-/**
- * Calculates alkalinity in mg/L CaCO3 from bicarbonate (mg/L).
- * Formula: alkalinity = bicarbonate * 0.8
- */
-const calculateAlkalinity = (bicarbonate: number): number => {
-  return bicarbonate * 0.8;
-};
-
-/**
- * Calculates total hardness in mg/L CaCO3 from calcium and magnesium (mg/L).
- */
-const calculateTotalHardness = (calcium: number, magnesium: number): number => {
-  return calculateCalciumHardness(calcium) + calculateMagnesiumHardness(magnesium);
-};
-
-/**
- * Calculates calcium hardness in mg/L CaCO3 from calcium (mg/L).
- */
-const calculateCalciumHardness = (calcium: number): number => {
-  return calcium * 2.5;
-};
-
-/**
- * Calculates magnesium hardness in mg/L CaCO3 from magnesium (mg/L).
- */
-const calculateMagnesiumHardness = (magnesium: number): number => {
-  return magnesium * 4.1;
-};
-
-interface WaterSource {
-  id: string;
-  name: string;
-  bicarbonate: number;
-  calcium: number;
-  magnesium: number;
-  alkalinity: number;
-  totalHardness: number;
-  calciumHardness: number;
-  magnesiumHardness: number;
-}
-
-interface BlendResult {
-  amounts: { [waterId: string]: number };
-  percentages: { [waterId: string]: number };
-  finalAlkalinity: number;
-  finalHardness: number;
-  finalCalcium: number;
-  finalMagnesium: number;
-}
+import { 
+  calculateAlkalinity,
+  calculateTotalHardness,
+  calculateCalciumHardness,
+  calculateMagnesiumHardness 
+} from '../lib/calculations';
+import type { WaterSource, BlendResult } from '../types';
 
 export function MineralCalc() {
   const [waterSources, setWaterSources] = useState<WaterSource[]>([
