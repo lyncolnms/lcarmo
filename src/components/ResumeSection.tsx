@@ -275,7 +275,7 @@ export function ResumeSection() {
           <TabsContent value="certifications" className="mt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {certifications.map((cert) => (
-                <Card key={cert.name + cert.provider} className="hover:shadow-md transition-shadow">
+                <Card key={`${cert.name}::${cert.provider}`} className="hover:shadow-md transition-shadow">
                   <CardContent className="pt-6">
                     <div className="flex items-start justify-between space-x-3">
                       <div className="flex items-start space-x-3 flex-1">
