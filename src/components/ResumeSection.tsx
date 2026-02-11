@@ -131,8 +131,8 @@ export function ResumeSection() {
 
           <TabsContent value="experience" className="mt-8">
             <div className="space-y-6">
-              {displayedExperiences.map((exp, index) => (
-                <Card key={index}>
+              {displayedExperiences.map((exp) => (
+                <Card key={`${exp.company}-${exp.period}`}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
@@ -191,8 +191,8 @@ export function ResumeSection() {
 
           <TabsContent value="education" className="mt-8">
             <div className="grid md:grid-cols-2 gap-6">
-              {education.map((edu, index) => (
-                <Card key={index}>
+              {education.map((edu) => (
+                <Card key={`${edu.degree}-${edu.institution}`}>
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       <GraduationCap className="h-5 w-5 mr-2" />
@@ -274,8 +274,8 @@ export function ResumeSection() {
 
           <TabsContent value="certifications" className="mt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {certifications.map((cert, index) => (
-                <Card key={index} className="hover:shadow-md transition-shadow">
+              {certifications.map((cert) => (
+                <Card key={`${cert.name}::${cert.provider}`} className="hover:shadow-md transition-shadow">
                   <CardContent className="pt-6">
                     <div className="flex items-start justify-between space-x-3">
                       <div className="flex items-start space-x-3 flex-1">
