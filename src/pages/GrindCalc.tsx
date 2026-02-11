@@ -235,23 +235,6 @@ const generateManualGrinderSettings = () => ({
   'Cold Drip': '22-28'
 });
 
-  // Helper function to generate settings based on grinder type
-  const generateManualGrinderSettings = () => ({
-    'Turkish': '1-2',
-    'Espresso': '5-8',
-    'Filter Coffee Machine': '10-15',
-    'AeroPress': '8-12',
-    'Moka Pot': '6-10',
-    'Siphon': '9-13',
-    'V60': '10-12',
-    'Pour-over': '11-14',
-    'Steep-and-release': '12-14',
-    'Cupping': '13-15',
-    'French Press': '18-25',
-    'Cold Brew': '25+',
-    'Cold Drip': '22-28'
-  });
-
 const generateElectricGrinderSettings = () => ({
   'Turkish': '1-2',
   'Espresso': '8-12',
