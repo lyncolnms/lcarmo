@@ -8,14 +8,17 @@
     ".js": "text/javascript",
     ".css": "text/css"
   },
-  "globalHeaders": {
-    "cache-control": "public, max-age=31536000, immutable"
-  },
   "routes": [
     {
       "route": "/static/*",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/index.html",
+      "headers": {
+        "cache-control": "no-cache"
       }
     }
   ]
