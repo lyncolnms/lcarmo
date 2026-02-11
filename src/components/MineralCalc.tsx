@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { 
   calculateAlkalinity,
   calculateTotalHardness,
@@ -91,18 +91,18 @@ export function MineralCalc() {
     );
   };
 
-  const calculateBlend = (): BlendResult | null => {
+  const calculateBlend = useCallback((): BlendResult | null => {
     const targetAlk = parseFloat(targetAlkalinity);
     const volume = parseFloat(targetVolume);
 
     if (!targetAlk || !volume || updatedSources.length < 2) return null;
 
     // Filtrar águas válidas
-    const sources = updatedSources.filter(s => 
-      s.alkalinity >= 0 && 
-      s.calcium >= 0 && 
-      s.magnesium >= 0 &&
-      s.bicarbonate >= 0
+    const sources = updatedSources.filter(waterSource => 
+      waterSource.alkalinity >= 0 && 
+      waterSource.calcium >= 0 && 
+      waterSource.magnesium >= 0 &&
+      waterSource.bicarbonate >= 0
     );
     
     if (sources.length < 2) return null;
@@ -166,18 +166,18 @@ export function MineralCalc() {
     let bestError = Infinity;
 
     // Gerar combinações possíveis usando programação dinâmica simplificada
-    // Make the number of iterations adaptive to the number of sources for better scalability.
-    // For 3 sources: 2000, for 4: 4000, for 5: 8000, etc.
-    const iterations = Math.max(2000, 2000 * Math.pow(2, sources.length - 3));
+    // Cap iterations at 5000 to prevent exponential growth and UI freezing
+    // Use more efficient sampling strategy for larger source counts
+    const iterations = Math.min(5000, Math.max(2000, 2000 * Math.pow(1.5, sources.length - 3)));
     
-    for (let i = 0; i < iterations; i++) {
+    for (let iteration = 0; iteration < iterations; iteration++) {
       const proportions: number[] = [];
       let total = 0;
       
       // Gerar proporções aleatórias que somem 1
-      for (let j = 0; j < sources.length - 1; j++) {
+      for (let sourceIndex = 0; sourceIndex < sources.length - 1; sourceIndex++) {
         const remaining = 1 - total;
-        const maxProp = remaining / (sources.length - j);
+        const maxProp = remaining / (sources.length - sourceIndex);
         const prop = Math.random() * maxProp;
         proportions.push(prop);
         total += prop;
@@ -193,11 +193,11 @@ export function MineralCalc() {
       let resultCalcium = 0;
       let resultMagnesium = 0;
       
-      for (let j = 0; j < sources.length; j++) {
-        resultAlkalinity += sources[j].alkalinity * proportions[j];
-        resultHardness += sources[j].totalHardness * proportions[j];
-        resultCalcium += sources[j].calcium * proportions[j];
-        resultMagnesium += sources[j].magnesium * proportions[j];
+      for (let sourceIndex = 0; sourceIndex < sources.length; sourceIndex++) {
+        resultAlkalinity += sources[sourceIndex].alkalinity * proportions[sourceIndex];
+        resultHardness += sources[sourceIndex].totalHardness * proportions[sourceIndex];
+        resultCalcium += sources[sourceIndex].calcium * proportions[sourceIndex];
+        resultMagnesium += sources[sourceIndex].magnesium * proportions[sourceIndex];
       }
       
       const error = Math.abs(resultAlkalinity - targetAlk);
@@ -225,9 +225,9 @@ export function MineralCalc() {
     }
     
     return bestResult;
-  };
+  }, [updatedSources, targetAlkalinity, targetVolume]);
 
-  const blendResult = calculateBlend();
+  const blendResult = useMemo(() => calculateBlend(), [calculateBlend]);
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
