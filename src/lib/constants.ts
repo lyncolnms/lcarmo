@@ -2,7 +2,7 @@
  * Constants for coffee brewing calculations.
  */
 
-import { BrewMethod } from '../types';
+import type { BrewMethod } from '../types';
 
 /**
  * Standard brew methods with their recommended settings.
