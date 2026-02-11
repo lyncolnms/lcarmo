@@ -132,7 +132,7 @@ export function ResumeSection() {
           <TabsContent value="experience" className="mt-8">
             <div className="space-y-6">
               {displayedExperiences.map((exp) => (
-                <Card key={exp.company + exp.period}>
+                <Card key={`${exp.company}-${exp.period}`}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
