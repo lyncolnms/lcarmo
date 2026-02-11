@@ -1,5 +1,22 @@
 {
-    "navigationFallback": {
-        "rewrite": "/index.html"
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/static/*", "/*.{css,js,png,jpg,jpeg,gif,svg,ico,json,txt}"]
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".js": "text/javascript",
+    ".css": "text/css"
+  },
+  "globalHeaders": {
+    "cache-control": "public, max-age=31536000, immutable"
+  },
+  "routes": [
+    {
+      "route": "/static/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
     }
+  ]
 }
