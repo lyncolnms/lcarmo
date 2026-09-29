@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberPulse GRC</title>
+  <meta name="description" content="Dashboard cyberpunk com notícias de cibersegurança e destaque para GRC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+      --radius-sm: 0.375rem; --radius-md: 0.75rem; --radius-lg: 1rem; --radius-xl: 1.25rem; --radius-full: 9999px;
+      --font-display: 'Orbitron', 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --bg: #090312;
+      --bg-2: #12051f;
+      --surface: rgba(15, 12, 35, 0.78);
+      --surface-2: rgba(21, 18, 49, 0.92);
+      --surface-3: rgba(10, 27, 41, 0.72);
+      --border: rgba(96, 244, 255, 0.18);
+      --text: #e7f7ff;
+      --muted: #8aa3b8;
+      --primary: #30f2ff;
+      --secondary: #ff3df2;
+      --success: #6dff8e;
+      --warning: #ffd166;
+      --danger: #ff6b9d;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --grid: rgba(48, 242, 255, 0.09);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,61,242,0.12), transparent 22%),
+        radial-gradient(circle at top right, rgba(48,242,255,0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg), #05020a 55%, #020104 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(180deg, rgba(255,255,255,0.45), transparent 90%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; }
+    .wrap { width: min(1440px, calc(100% - 2rem)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 4, 18, 0.74);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+      padding: var(--space-4) 0;
+    }
+    .brand { display: flex; align-items: center; gap: var(--space-3); }
+    .logo {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: grid; place-items: center;
+      color: var(--primary);
+      background: linear-gradient(135deg, rgba(48,242,255,0.12), rgba(255,61,242,0.12));
+      border: 1px solid rgba(48,242,255,0.25);
+      box-shadow: inset 0 0 22px rgba(48,242,255,0.12), 0 0 26px rgba(48,242,255,0.08);
+    }
+    .brand h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .brand p { color: var(--muted); font-size: var(--text-xs); }
+    .actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .btn {
+      min-height: 44px; padding: 0 var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm); font-weight: 600;
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .btn.primary {
+      background: linear-gradient(90deg, rgba(48,242,255,0.16), rgba(255,61,242,0.16));
+      color: var(--primary);
+      border-color: rgba(48,242,255,0.24);
+      box-shadow: 0 0 18px rgba(48,242,255,0.14);
+    }
+    main { padding: var(--space-8) 0 var(--space-12); }
+    .hero {
+      display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-6);
+      align-items: stretch;
+      margin-bottom: var(--space-8);
+    }
+    .panel {
+      background: linear-gradient(180deg, rgba(15,12,35,0.92), rgba(8,8,20,0.92));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .panel::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(48,242,255,0.04), transparent 68%);
+      pointer-events: none;
+    }
+    .hero-card { padding: var(--space-8); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 0.45rem 0.85rem; border-radius: var(--radius-full);
+      font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--primary); background: rgba(48,242,255,0.08); border: 1px solid rgba(48,242,255,0.18);
+      margin-bottom: var(--space-4);
+    }
+    .hero h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+    .hero p { color: var(--muted); max-width: 62ch; }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    .stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+    .stat strong {
+      display: block; font-size: 1.75rem; color: var(--primary); font-family: var(--font-display);
+    }
+    .stat span { color: var(--muted); font-size: var(--text-sm); }
+    .side-card { padding: var(--space-6); display: grid; gap: var(--space-4); }
+    .side-card h3, .section-title { font-size: var(--text-lg); font-family: var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; }
+    .live-line {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+      padding: var(--space-4); border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--success); box-shadow: 0 0 12px var(--success); }
+    .ticker { color: var(--muted); font-size: var(--text-sm); }
+    .layout {
+      display: grid; grid-template-columns: 320px 1fr; gap: var(--space-6);
+    }
+    .sidebar { display: grid; gap: var(--space-6); align-content: start; }
+    .filters, .sources, .mini-note { padding: var(--space-5); }
+    .chip-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+    .chip {
+      padding: 0.6rem 0.85rem; border-radius: var(--radius-full); font-size: var(--text-xs);
+      border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: var(--muted);
+    }
+    .chip.active { color: var(--primary); border-color: rgba(48,242,255,0.24); background: rgba(48,242,255,0.08); }
+    .source-list { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+    .source-item {
+      display: flex; justify-content: space-between; gap: var(--space-3);
+      padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: var(--text-sm);
+    }
+    .source-item:last-child { border-bottom: none; }
+    .source-name { color: var(--text); }
+    .source-tag { color: var(--primary); }
+    .content { display: grid; gap: var(--space-6); }
+    .grid-head {
+      display: flex; align-items: end; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
+    }
+    .grid-sub { color: var(--muted); font-size: var(--text-sm); }
+    .news-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5);
+    }
+    .news-card {
+      padding: var(--space-5); display: grid; gap: var(--space-4);
+      min-height: 220px;
+      background: linear-gradient(180deg, rgba(13,17,33,0.95), rgba(9,9,22,0.95));
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .news-card.grc {
+      border-color: rgba(255,61,242,0.28);
+      box-shadow: inset 0 0 0 1px rgba(255,61,242,0.14), 0 0 30px rgba(255,61,242,0.08);
+    }
+    .meta { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+    .pill {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      border-radius: var(--radius-full); padding: 0.35rem 0.7rem;
+      font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em;
+      border: 1px solid rgba(255,255,255,0.08); color: var(--muted); background: rgba(255,255,255,0.03);
+    }
+    .pill.grc { color: #ff8ff8; border-color: rgba(255,61,242,0.22); background: rgba(255,61,242,0.08); }
+    .pill.source { color: var(--primary); border-color: rgba(48,242,255,0.22); background: rgba(48,242,255,0.08); }
+    .news-card h4 {
+      font-size: 1.12rem; line-height: 1.35;
+    }
+    .news-card p { color: var(--muted); font-size: var(--text-sm); }
+    .news-footer { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-top: auto; }
+    .news-link {
+      color: var(--primary); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: var(--text-xs);
+    }
+    .score { font-family: var(--font-display); color: var(--warning); font-size: 1.05rem; }
+    .highlight-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);
+    }
+    .highlight {
+      padding: var(--space-5); border-radius: var(--radius-lg);
+      border: 1px solid rgba(48,242,255,0.16);
+      background: linear-gradient(180deg, rgba(48,242,255,0.08), rgba(255,61,242,0.03));
+    }
+    .highlight strong { display: block; color: var(--primary); margin-bottom: var(--space-2); font-family: var(--font-display); }
+    .muted { color: var(--muted); }
+    .empty {
+      padding: var(--space-8); text-align: center; color: var(--muted);
+      border: 1px dashed rgba(255,255,255,0.12); border-radius: var(--radius-xl);
+      background: rgba(255,255,255,0.02);
+    }
+    .footer-note { color: var(--muted); font-size: var(--text-sm); padding: var(--space-6) 0 0; }
+    @media (max-width: 1100px) {
+      .hero, .layout, .news-grid, .highlight-strip { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 1rem, 100%); }
+      .hero-card, .side-card { padding: var(--space-5); }
+      .topbar-inner, .grid-head, .news-footer { align-items: flex-start; }
+      .actions { width: 100%; }
+      .btn { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="CyberPulse logo">
+            <path d="M12 2L4 6.5V12c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6.5L12 2Z"></path>
+            <path d="M9.5 12.5 11 14l3.5-4"></path>
+          </svg>
+        </div>
+        <div>
+          <h1>CyberPulse GRC</h1>
+          <p>Radar de notícias de cibersegurança em visual cyberpunk</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="refreshBtn">Atualizar feeds</button>
+        <button class="btn primary" id="grcBtn">Priorizar GRC</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <article class="panel hero-card">
+        <span class="eyebrow">Signal / Threat / Governance</span>
+        <h2>Notícias de cibersegurança com GRC em primeiro plano</h2>
+        <p>Este painel agrega feeds RSS e aplica classificação visual para destacar temas de governança, risco, compliance, privacidade, auditoria e regulamentação. O visual usa contraste neon, camadas escuras e cartões simples para ficar bonito e fácil de entender.</p>
+        <div class="hero-stats">
+          <div class="stat"><strong id="statTotal">0</strong><span>Itens carregados</span></div>
+          <div class="stat"><strong id="statGrc">0</strong><span>Destaques GRC</span></div>
+          <div class="stat"><strong id="statSources">0</strong><span>Fontes ativas</span></div>
+        </div>
+      </article>
+      <aside class="panel side-card">
+        <h3>Fluxo ao vivo</h3>
+        <div class="live-line"><span>Coleta de notícias</span><span class="dot"></span></div>
+        <div class="ticker" id="statusText">Inicializando agregador RSS…</div>
+        <div class="highlight-strip">
+          <div class="highlight"><strong>GRC</strong><span class="muted">Peso maior para compliance, risco, privacidade e auditoria.</span></div>
+          <div class="highlight"><strong>Feeds</strong><span class="muted">Mistura de fontes gerais e orientadas a liderança/CISO.</span></div>
+          <div class="highlight"><strong>Leitura</strong><span class="muted">Cards priorizados por relevância temática e recência disponível.</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="layout">
+      <aside class="sidebar">
+        <div class="panel filters">
+          <div class="section-title">Filtros visuais</div>
+          <div class="chip-row">
+            <button class="chip active" data-filter="all">Tudo</button>
+            <button class="chip" data-filter="grc">GRC</button>
+            <button class="chip" data-filter="incident">Incidentes</button>
+            <button class="chip" data-filter="vuln">Vulnerabilidades</button>
+            <button class="chip" data-filter="privacy">Privacidade</button>
+          </div>
+        </div>
+        <div class="panel sources">
+          <div class="section-title">Fontes</div>
+          <div class="source-list" id="sourceList"></div>
+        </div>
+        <div class="panel mini-note">
+          <div class="section-title">Como o destaque funciona</div>
+          <p class="muted" style="margin-top:1rem;">Um item recebe selo GRC quando o título ou resumo cita termos como governance, risk, compliance, privacy, regulation, audit, policy, LGPD, GDPR, ISO 27001 ou third-party risk.</p>
+        </div>
+      </aside>
+
+      <section class="content">
+        <div class="grid-head">
+          <div>
+            <div class="section-title">Painel de notícias</div>
+            <div class="grid-sub" id="lastUpdated">Aguardando atualização…</div>
+          </div>
+        </div>
+        <div id="newsGrid" class="news-grid"></div>
+      </section>
+    </section>
+
+    <div class="footer-note">Feeds padrão configurados: BleepingComputer, The Hacker News, Security Magazine e Cybersecurity Headlines/CISO Series. Se algum feed bloquear o navegador, o dashboard mantém exemplos locais para não ficar vazio.</div>
+  </main>
+
+  <script>
+    const fallbackItems = [
+      {
+        title: 'Regulatory change and cyber compliance programs gain board attention',
+        link: 'https://www.securitymagazine.com/rss',
+        source: 'Security Magazine',
+        published: '2026-06-18T09:00:00Z',
+        summary: 'Coverage on cybersecurity, data privacy, compliance, leadership and risk management priorities for security teams.'
+      },
+      {
+        title: 'Third-party risk and vendor exposure reshape governance priorities',
+        link: 'https://www.securitymagazine.com/rss',
+        source: 'Security Magazine',
+        published: '2026-06-18T08:30:00Z',
+        summary: 'Governance teams are tightening vendor reviews, audit controls and evidence collection after recent cyber disruptions.'
+      },
+      {
+        title: 'New ransomware campaign targets enterprise edge devices',
+        link: 'https://www.bleepingcomputer.com/feed/',
+        source: 'BleepingComputer',
+        published: '2026-06-18T07:30:00Z',
+        summary: 'Operators are exploiting exposed appliances and remote management features to gain initial access.'
+      },
+      {
+        title: 'Privacy and compliance leaders map AI risks into control frameworks',
+        link: 'https://www.cisoseries.com/',
+        source: 'CISO Series',
+        published: '2026-06-18T06:45:00Z',
+        summary: 'Security leadership is connecting AI governance, privacy impact assessments and policy updates into GRC workflows.'
+      },
+      {
+        title: 'Critical browser vulnerability exploited in targeted attacks',
+        link: 'https://thehackernews.com/search/label/Rss%20feeds',
+        source: 'The Hacker News',
+        published: '2026-06-18T05:10:00Z',
+        summary: 'Researchers warn that in-the-wild exploitation is accelerating patch timelines for security teams.'
+      },
+      {
+        title: 'Audit readiness becomes a cybersecurity metric for executive reporting',
+        link: 'https://www.cisoseries.com/',
+        source: 'CISO Series',
+        published: '2026-06-18T04:20:00Z',
+        summary: 'CISOs and GRC analysts are measuring evidence quality, policy maturity and control health for board visibility.'
+      }
+    ];
+
+    const feeds = [
+      { name: 'BleepingComputer', url: 'https://www.bleepingcomputer.com/feed/', tag: 'general' },
+      { name: 'The Hacker News', url: 'https://feeds.feedburner.com/TheHackersNews', tag: 'general' },
+      { name: 'Security Magazine', url: 'https://www.securitymagazine.com/rss/topic/2236-cybersecurity', tag: 'grc' },
+      { name: 'CISO Series', url: 'https://cisoseries.com/feed/', tag: 'grc' }
+    ];
+
+    const grcTerms = ['grc','governance','risk','compliance','privacy','regulation','regulatory','audit','policy','framework','lgpd','gdpr','iso 27001','soc 2','nist','third-party risk','vendor risk','board','internal control','controls'];
+    const incidentTerms = ['ransomware','breach','incident','attack','malware','phishing','threat actor'];
+    const vulnTerms = ['vulnerability','cve','zero-day','patch','exploit','security flaw'];
+    const privacyTerms = ['privacy','data protection','lgpd','gdpr','consent','regulation'];
+
+    let items = [];
+    let currentFilter = 'all';
+    let prioritizeGrc = true;
+
+    const dom = {
+      grid: document.getElementById('newsGrid'),
+      sources: document.getElementById('sourceList'),
+      status: document.getElementById('statusText'),
+      updated: document.getElementById('lastUpdated'),
+      total: document.getElementById('statTotal'),
+      grc: document.getElementById('statGrc'),
+      sourceCount: document.getElementById('statSources'),
+      refresh: document.getElementById('refreshBtn'),
+      grcBtn: document.getElementById('grcBtn')
+    };
+
+    function proxyUrl(url) {
+      return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+    }
+
+    function stripHtml(input='') {
+      return input.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function scoreItem(text='') {
+      const lower = text.toLowerCase();
+      let score = 0;
+      if (grcTerms.some(t => lower.includes(t))) score += 4;
+      if (privacyTerms.some(t => lower.includes(t))) score += 2;
+      if (incidentTerms.some(t => lower.includes(t))) score += 1;
+      if (vulnTerms.some(t => lower.includes(t))) score += 1;
+      return score;
+    }
+
+    function categoryFor(text='') {
+      const lower = text.toLowerCase();
+      if (grcTerms.some(t => lower.includes(t))) return 'grc';
+      if (privacyTerms.some(t => lower.includes(t))) return 'privacy';
+      if (incidentTerms.some(t => lower.includes(t))) return 'incident';
+      if (vulnTerms.some(t => lower.includes(t))) return 'vuln';
+      return 'general';
+    }
+
+    function relativeTime(dateStr) {
+      if (!dateStr) return 'Sem data';
+      const date = new Date(dateStr);
+      if (Number.isNaN(date.getTime())) return 'Sem data';
+      const diff = Date.now() - date.getTime();
+      const mins = Math.floor(diff / 60000);
+      if (mins < 60) return `${Math.max(1, mins)} min atrás`;
+      const hours = Math.floor(mins / 60);
+      if (hours < 24) return `${hours}h atrás`;
+      const days = Math.floor(hours / 24);
+      return `${days}d atrás`;
+    }
+
+    function parseFeed(xmlText, sourceName) {
+      const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+      const entries = [...xml.querySelectorAll('item, entry')].slice(0, 10);
+      return entries.map(node => {
+        const title = node.querySelector('title')?.textContent?.trim() || 'Sem título';
+        const linkNode = node.querySelector('link');
+        const link = linkNode?.getAttribute('href') || linkNode?.textContent?.trim() || '#';
+        const summary = stripHtml(node.querySelector('description, summary, content')?.textContent || '');
+        const published = node.querySelector('pubDate, published, updated')?.textContent?.trim() || '';
+        const textBlob = `${title} ${summary}`;
+        return {
+          title,
+          link,
+          summary: summary || 'Sem resumo disponível.',
+          published,
+          source: sourceName,
+          score: scoreItem(textBlob),
+          category: categoryFor(textBlob)
+        };
+      });
+    }
+
+    function normalizeFallback() {
+      return fallbackItems.map(item => {
+        const textBlob = `${item.title} ${item.summary}`;
+        return { ...item, score: scoreItem(textBlob), category: categoryFor(textBlob) };
+      });
+    }
+
+    function sortItems(data) {
+      return data.sort((a, b) => {
+        const aDate = new Date(a.published || 0).getTime() || 0;
+        const bDate = new Date(b.published || 0).getTime() || 0;
+        if (prioritizeGrc && b.score !== a.score) return b.score - a.score;
+        return bDate - aDate;
+      });
+    }
+
+    function renderSources() {
+      dom.sources.innerHTML = feeds.map(feed => `
+        <div class="source-item">
+          <span class="source-name">${feed.name}</span>
+          <span class="source-tag">${feed.tag.toUpperCase()}</span>
+        </div>
+      `).join('');
+      dom.sourceCount.textContent = String(feeds.length);
+    }
+
+    function renderGrid() {
+      const filtered = items.filter(item => currentFilter === 'all' ? true : item.category === currentFilter);
+      dom.total.textContent = String(items.length);
+      dom.grc.textContent = String(items.filter(i => i.category === 'grc').length);
+      if (!filtered.length) {
+        dom.grid.innerHTML = '<div class="empty">Nenhum item encontrado para esse filtro.</div>';
+        return;
+      }
+      dom.grid.innerHTML = filtered.map(item => `
+        <article class="news-card ${item.category === 'grc' ? 'grc' : ''}">
+          <div class="meta">
+            <span class="pill source">${item.source}</span>
+            ${item.category === 'grc' ? '<span class="pill grc">Destaque GRC</span>' : `<span class="pill">${item.category}</span>`}
+          </div>
+          <h4>${item.title}</h4>
+          <p>${item.summary.slice(0, 210)}</p>
+          <div class="news-footer">
+            <div>
+              <div class="score">+${item.score} signal</div>
+              <div class="muted" style="font-size:var(--text-xs); margin-top:0.2rem;">${relativeTime(item.published)}</div>
+            </div>
+            <a class="news-link" href="${item.link}" target="_blank" rel="noopener noreferrer">Abrir</a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    async function loadFeeds() {
+      dom.status.textContent = 'Consultando fontes RSS e organizando destaques…';
+      const requests = feeds.map(async feed => {
+        try {
+          const response = await fetch(proxyUrl(feed.url));
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          const text = await response.text();
+          return parseFeed(text, feed.name);
+        } catch (error) {
+          return [];
+        }
+      });
+
+      const results = await Promise.all(requests);
+      const merged = results.flat().filter(item => item.title && item.link);
+      items = sortItems(merged.length ? merged : normalizeFallback());
+      const liveCount = results.filter(r => r.length).length;
+      dom.status.textContent = liveCount
+        ? `Feeds carregados com sucesso. ${liveCount} fonte(s) responderam ao vivo.`
+        : 'Feeds ao vivo indisponíveis no momento; exibindo coleção local curada.';
+      dom.updated.textContent = 'Última atualização: ' + new Date().toLocaleString('pt-BR');
+      renderGrid();
+    }
+
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderGrid();
+      });
+    });
+
+    dom.refresh.addEventListener('click', loadFeeds);
+    dom.grcBtn.addEventListener('click', () => {
+      prioritizeGrc = !prioritizeGrc;
+      dom.grcBtn.textContent = prioritizeGrc ? 'Priorizar GRC' : 'Ordenar por recência';
+      items = sortItems(items);
+      renderGrid();
+    });
+
+    renderSources();
+    loadFeeds();
+  </script>
+</body>
+</html>
